@@ -1,24 +1,32 @@
-html,
-body {
-    width: 100%;
-}
-
 :root {
     --altura-cabecalho: 100px;
+    --azul: #00123B;
+    --branco: #FFF;
+    --verde: #2E8B57;
+    --amarelo: #FFD54F;
+    --branco-55: rgba(255, 255, 255, .55);
+    --branco-12: rgba(255, 255, 255, .12);
+    --branco-10: rgba(255, 255, 255, .1);
+    --s25: rgba(0, 0, 0, .25)
+}
+
+html,
+body {
+    width: 100%
 }
 
 * {
-    font-family: "Poppins", sans-serif;
-    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+    box-sizing: border-box
 }
 
 body {
     margin: 0;
-    padding-top: var(--altura-cabecalho);
+    padding-top: var(--altura-cabecalho)
 }
 
 .cabecalho {
-    background-color: #00123B;
+    background: var(--azul);
     height: var(--altura-cabecalho);
     display: flex;
     align-items: center;
@@ -28,8 +36,7 @@ body {
     left: 0;
     width: 100%;
     z-index: 1000;
-
-    overflow-x: visible;
+    overflow-x: visible
 }
 
 .conteiner-navbar {
@@ -39,19 +46,19 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 24px;
-    min-width: 0;
+    min-width: 0
 }
 
 .area-logo {
     display: flex;
     align-items: center;
-    flex-shrink: 0;
+    flex-shrink: 0
 }
 
 .imagem-logo {
     height: 75px;
     object-fit: contain;
-    display: block;
+    display: block
 }
 
 .menu {
@@ -61,19 +68,19 @@ body {
     justify-content: space-evenly;
     gap: 28px;
     margin: 0 40px;
-    min-width: 0;
+    min-width: 0
 }
 
 .item-menu {
-    color: #FFFFFF;
+    color: var(--branco);
     font-size: 15px;
     text-decoration: none;
     white-space: nowrap;
-    font-weight: 400;
+    font-weight: 400
 }
 
 .item-menu:hover {
-    opacity: 0.8;
+    opacity: .8
 }
 
 .area-botao {
@@ -81,130 +88,124 @@ body {
     align-items: center;
     justify-content: flex-end;
     gap: 12px;
-    flex-shrink: 0;
+    flex-shrink: 0
 }
 
 .botao-entrar {
-    background-color: transparent;
-    color: #FFFFFF;
-    border: 1.8px solid #FFFFFF;
+    background: transparent;
+    color: var(--branco);
+    border: 1.8px solid var(--branco);
     border-radius: 999px;
     padding: 8px 26px;
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
-    transition: 0.2s ease;
-
+    transition: .2s ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none;
+    text-decoration: none
 }
 
 .botao-entrar:hover {
-    background-color: #2E8B57;
-    border-color: #2E8B57;
-    color: #FFFFFF;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    background: var(--verde);
+    border-color: var(--verde);
+    color: var(--branco);
+    box-shadow: 0 6px 18px var(--s25)
 }
 
 .botao-entrar:focus-visible {
-    outline: 2px solid #FFD54F;
-    outline-offset: 2px;
+    outline: 2px solid var(--amarelo);
+    outline-offset: 2px
 }
 
 .botao-menu {
     display: none;
-    /* aparece só no responsivo */
     align-items: center;
     justify-content: center;
     width: 44px;
     height: 44px;
-    border: 1.8px solid rgba(255, 255, 255, 0.55);
+    border: 1.8px solid var(--branco-55);
     background: transparent;
     border-radius: 12px;
-    cursor: pointer;
+    cursor: pointer
 }
 
 .botao-menu span {
     width: 20px;
     height: 2px;
-    background: #FFFFFF;
+    background: var(--branco);
     position: relative;
     display: block;
-    border-radius: 999px;
+    border-radius: 999px
 }
 
-.botao-menu span::before,
-.botao-menu span::after {
+.botao-menu span:before,
+.botao-menu span:after {
     content: "";
     position: absolute;
     left: 0;
     width: 20px;
     height: 2px;
-    background: #FFFFFF;
-    border-radius: 999px;
+    background: var(--branco);
+    border-radius: 999px
 }
 
-.botao-menu span::before {
-    top: -6px;
+.botao-menu span:before {
+    top: -6px
 }
 
-.botao-menu span::after {
-    top: 6px;
+.botao-menu span:after {
+    top: 6px
 }
 
-@media (max-width: 1600px) {
+@media (max-width:1600px) {
     .menu {
         gap: 16px;
-        margin: 0 18px;
+        margin: 0 18px
     }
 
     .item-menu {
-        font-size: 14px;
+        font-size: 14px
     }
 
     .botao-entrar {
-        padding: 8px 18px;
+        padding: 8px 18px
     }
 }
 
-@media (max-width: 1200px) {
+@media (max-width:1200px) {
 
     html,
     body {
-        overflow-x: hidden;
-        /* evita arrastar pro lado */
+        overflow-x: hidden
     }
 
     .cabecalho {
-        overflow-x: clip;
-        /* corta qualquer sobra no responsivo */
+        overflow-x: clip
     }
 
     :root {
-        --altura-cabecalho: 90px;
+        --altura-cabecalho: 90px
     }
 
     .conteiner-navbar {
-        padding: 0 16px;
+        padding: 0 16px
     }
 
     .imagem-logo {
-        height: 64px;
+        height: 64px
     }
 
     .botao-menu {
-        display: inline-flex;
+        display: inline-flex
     }
 
-    /* some o menu horizontal */
     .menu {
         display: none;
-        margin: 0;
+        margin: 0
     }
 
-    /* menu aberto vira painel */
     .menu.ativo {
         display: flex;
         position: fixed;
@@ -213,17 +214,14 @@ body {
         right: 0;
         width: 100%;
         z-index: 1100;
-
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
-
         padding: 14px 16px;
-        background: #00123B;
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-
+        background: var(--azul);
+        border-top: 1px solid var(--branco-12);
         max-height: calc(100vh - var(--altura-cabecalho));
-        overflow-y: auto;
+        overflow-y: auto
     }
 
     .menu.ativo .item-menu {
@@ -231,35 +229,35 @@ body {
         padding: 10px 12px;
         border-radius: 12px;
         white-space: normal;
-        font-size: 15px;
+        font-size: 15px
     }
 
     .menu.ativo .item-menu:hover {
-        background: rgba(255, 255, 255, 0.10);
-        opacity: 1;
+        background: var(--branco-10);
+        opacity: 1
     }
 
     .botao-entrar {
-        padding: 8px 18px;
+        padding: 8px 18px
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
     :root {
-        --altura-cabecalho: 80px;
+        --altura-cabecalho: 80px
     }
 
     .imagem-logo {
-        height: 56px;
+        height: 56px
     }
 
     .botao-entrar {
         padding: 8px 14px;
-        font-size: 12px;
+        font-size: 12px
     }
 
     .botao-menu {
         width: 42px;
-        height: 42px;
+        height: 42px
     }
 }

@@ -1,24 +1,42 @@
+:root {
+    --azul: #00123B;
+    --verde: #2E8B57;
+    --laranja: #FF7A00;
+    --amarelo: #FFD54F;
+    --cinza: #F5F6FA;
+    --branco: #FFF;
+    --azul-15: rgba(0, 18, 59, .15);
+    --s05: rgba(0, 0, 0, .05);
+    --s06: rgba(0, 0, 0, .06);
+    --s18: rgba(0, 0, 0, .18);
+    --s25: rgba(0, 0, 0, .25)
+}
+
 .conteudo-impacto {
     width: 100%;
-    background-color: #F5F6FA;
-    font-family: "Poppins", sans-serif;
+    background: var(--cinza);
+    font-family: Poppins, sans-serif
 }
+
 .impacto-animado {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity .6s ease, transform .6s ease
 }
+
 .impacto-animado.visivel {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0)
 }
+
 .secao-impacto-hero {
     width: 100%;
-    background-color: #FFFFFF;
+    background: var(--branco);
     padding: 48px 0 40px;
     display: flex;
-    justify-content: center;
+    justify-content: center
 }
+
 .conteiner-impacto-hero {
     max-width: 1200px;
     width: 100%;
@@ -26,188 +44,226 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 40px;
+    gap: 40px
 }
+
 .coluna-hero-impacto-texto {
-    flex: 1.4;
+    flex: 1.4
 }
+
 .coluna-hero-impacto-kpi {
     flex: 1;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-end
 }
+
 .etiqueta-impacto {
     display: inline-block;
     padding: 4px 10px;
     border-radius: 999px;
-    background-color: #00123B;
-    color: #FFFFFF;
+    background: var(--azul);
+    color: var(--branco);
     font-size: 11px;
     font-weight: 500;
-    margin-bottom: 10px;
+    margin-bottom: 10px
 }
+
 .titulo-impacto-hero {
     font-size: 30px;
     font-weight: 700;
-    color: #00123B;
-    margin: 0 0 14px 0;
+    color: var(--azul);
+    margin: 0 0 14px
 }
+
 .texto-impacto-hero {
     font-size: 14px;
     line-height: 1.6;
-    color: #00123B;
-    margin: 0 0 18px 0;
+    color: var(--azul);
+    margin: 0 0 18px
 }
+
 .linha-resumo-impacto {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 12px
 }
+
 .chip-impacto {
-    background-color: #F5F6FA;
+    background: var(--cinza);
     border-radius: 999px;
     padding: 6px 14px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 10px var(--s05);
     display: flex;
     flex-direction: column;
-    font-size: 11px;
+    font-size: 11px
 }
+
 .chip-titulo {
     font-weight: 600;
-    color: #00123B;
+    color: var(--azul)
 }
+
 .chip-texto {
-    color: #00123B;
-    opacity: 0.85;
+    color: var(--azul);
+    opacity: .85
 }
+
 .cartao-kpi-hero {
-    background-color: #00123B;
+    background: var(--azul);
     border-radius: 24px;
     padding: 24px 24px 22px;
-    color: #FFFFFF;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    color: var(--branco);
+    box-shadow: 0 10px 30px var(--s25);
     min-width: 260px;
-    max-width: 320px;
+    max-width: 320px
 }
+
 .rotulo-kpi-hero {
     font-size: 12px;
     font-weight: 500;
-    opacity: 0.9;
+    opacity: .9
 }
+
 .numero-kpi-hero {
     font-size: 40px;
     font-weight: 700;
-    margin: 10px 0 4px 0;
+    margin: 10px 0 4px
 }
+
 .legenda-kpi-hero {
     font-size: 12px;
-    opacity: 0.9;
+    opacity: .9
 }
+
 .secao-indicadores-impacto {
     width: 100%;
-    background-color: #F5F6FA;
+    background: var(--cinza);
     padding: 32px 0 40px;
     display: flex;
-    justify-content: center;
+    justify-content: center
 }
-.conteiner-indicadores-impacto {
+
+.conteiner-indicadores-impacto,
+.conteiner-impacto-perfis,
+.conteiner-linha-tempo-impacto {
     max-width: 1200px;
     width: 100%;
-    padding: 0 24px;
+    padding: 0 24px
 }
-.grade-indicadores-impacto {
+
+.grade-indicadores-impacto,
+.grade-impacto-perfis {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 20px;
+    gap: 20px
 }
+
 .cartao-indicador-impacto {
-    background-color: #FFFFFF;
+    background: var(--branco);
     border-radius: 22px;
     padding: 18px 18px 16px;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .06)
 }
+
 .rotulo-indicador-impacto {
     font-size: 12px;
     font-weight: 600;
-    color: #00123B;
-    opacity: 0.8;
+    color: var(--azul);
+    opacity: .8
 }
+
 .numero-indicador-impacto {
     font-size: 26px;
     font-weight: 700;
-    color: #00123B;
-    margin: 8px 0 6px 0;
+    color: var(--azul);
+    margin: 8px 0 6px
 }
+
 .texto-indicador-impacto {
     font-size: 12px;
     line-height: 1.5;
-    color: #00123B;
-    opacity: 0.9;
+    color: var(--azul);
+    opacity: .9
 }
-.secao-graficos-impacto {
+
+.secao-graficos-impacto,
+.secao-linha-tempo-impacto {
     width: 100%;
-    background-color: #FFFFFF;
-    padding: 40px 0 44px;
+    background: var(--branco);
     display: flex;
-    justify-content: center;
+    justify-content: center
 }
+
+.secao-graficos-impacto {
+    padding: 40px 0 44px
+}
+
 .conteiner-graficos-impacto {
     max-width: 1200px;
     width: 100%;
     padding: 0 24px;
     display: grid;
     grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-    gap: 32px;
+    gap: 32px
 }
+
 .titulo-grafico {
     font-size: 22px;
     font-weight: 700;
-    color: #00123B;
-    margin: 0 0 6px 0;
+    color: var(--azul);
+    margin: 0 0 6px
 }
+
 .subtitulo-grafico {
     font-size: 13px;
-    color: #00123B;
-    opacity: 0.9;
-    margin: 0 0 18px 0;
+    color: var(--azul);
+    opacity: .9;
+    margin: 0 0 18px
 }
+
 .legenda-grafico {
     font-size: 11px;
-    color: #00123B;
-    opacity: 0.9;
-    margin: 10px 0 0 0;
+    color: var(--azul);
+    opacity: .9;
+    margin: 10px 0 0
 }
-.bloco-grafico-barras {
-    background-color: #FFFFFF;
+
+.bloco-grafico-barras,
+.bloco-grafico-pizza {
+    background: var(--branco);
     border-radius: 24px;
     padding: 20px 24px 18px;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .06)
 }
+
 .area-grafico-barras {
     display: grid;
     grid-template-columns: 40px minmax(0, 1fr);
     gap: 8px;
     align-items: flex-end;
     height: 230px;
-    margin-top: 10px;
+    margin-top: 10px
 }
+
 .linha-eixo-y {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
     font-size: 10px;
-    color: #00123B;
-    opacity: 0.7;
+    color: var(--azul);
+    opacity: .7
 }
+
 .grade-barras {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     height: 100%;
     padding-bottom: 8px;
-    gap: 12px;
+    gap: 12px
 }
+
 .coluna-barra {
     flex: 1;
     max-width: 70px;
@@ -216,122 +272,124 @@
     align-items: center;
     justify-content: flex-end;
     height: 100%;
-    gap: 6px;
+    gap: 6px
 }
+
 .barra-mes {
     width: 100%;
     border-radius: 999px 999px 4px 4px;
-    background: linear-gradient(180deg, #2E8B57, #00123B);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+    background: linear-gradient(180deg, var(--verde), var(--azul));
+    box-shadow: 0 4px 10px var(--s18);
     height: 0%;
-    transition: height 0.6s ease-out;
+    transition: height .6s ease-out
 }
+
 .rotulo-mes {
     font-size: 11px;
     font-weight: 500;
-    color: #00123B;
-    text-align: center;
+    color: var(--azul);
+    text-align: center
 }
-.bloco-grafico-pizza {
-    background-color: #FFFFFF;
-    border-radius: 24px;
-    padding: 20px 24px 18px;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
-}
+
 .area-grafico-pizza {
     display: flex;
     gap: 18px;
-    align-items: center;
+    align-items: center
 }
+
 .pizza-impacto {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background: conic-gradient(#2E8B57 0 50%, #FF7A00 50% 80%, #00123B 80% 100%);
+    background: conic-gradient(var(--verde) 0 50%, var(--laranja) 50% 80%, var(--azul) 80% 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
-    position: relative;
+    box-shadow: 0 8px 22px var(--s18);
+    position: relative
 }
+
 .miolo-pizza {
     width: 110px;
     height: 110px;
     border-radius: 50%;
-    background-color: #FFFFFF;
+    background: var(--branco);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: center
 }
+
 .porcentagem-central {
     font-size: 22px;
     font-weight: 700;
-    color: #00123B;
+    color: var(--azul)
 }
+
 .texto-central {
     font-size: 11px;
-    color: #00123B;
-    text-align: center;
+    color: var(--azul);
+    text-align: center
 }
+
 .legenda-pizza {
     display: flex;
     flex-direction: column;
     gap: 8px;
     font-size: 12px;
-    color: #00123B;
+    color: var(--azul)
 }
+
 .item-legenda-pizza {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 6px
 }
+
 .bolinha-legenda {
     width: 10px;
     height: 10px;
-    border-radius: 50%;
+    border-radius: 50%
 }
+
 .bolinha-legenda-verde {
-    background-color: #2E8B57;
+    background: var(--verde)
 }
+
 .bolinha-legenda-laranja {
-    background-color: #FF7A00;
+    background: var(--laranja)
 }
+
 .bolinha-legenda-azul {
-    background-color: #00123B;
+    background: var(--azul)
 }
+
 .secao-impacto-perfis {
     width: 100%;
-    background-color: #F5F6FA;
+    background: var(--cinza);
     padding: 40px 0 44px;
     display: flex;
-    justify-content: center;
+    justify-content: center
 }
-.conteiner-impacto-perfis {
-    max-width: 1200px;
-    width: 100%;
-    padding: 0 24px;
-}
-.titulo-impacto-perfis {
+
+.titulo-impacto-perfis,
+.titulo-linha-tempo-impacto {
     font-size: 24px;
     font-weight: 700;
-    color: #00123B;
-    margin: 0 0 20px 0;
+    color: var(--azul);
+    margin: 0 0 20px
 }
-.grade-impacto-perfis {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 20px;
-}
+
 .cartao-impacto-perfil {
-    background-color: #FFFFFF;
+    background: var(--branco);
     border-radius: 20px;
-    padding: 16px 18px 16px;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+    padding: 16px 18px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .06);
     font-size: 12px;
     line-height: 1.5;
-    color: #00123B;
+    color: var(--azul)
 }
+
 .etiqueta-perfil-impacto {
     display: inline-block;
     padding: 4px 10px;
@@ -339,55 +397,49 @@
     font-size: 11px;
     font-weight: 600;
     margin-bottom: 8px;
-    color: #FFFFFF;
+    color: var(--branco)
 }
+
 .etiqueta-beneficiarios {
-    background-color: #2E8B57;
+    background: var(--verde)
 }
+
 .etiqueta-doadores {
-    background-color: #FF7A00;
+    background: var(--laranja)
 }
+
 .etiqueta-voluntarios {
-    background-color: #00123B;
+    background: var(--azul)
 }
+
 .etiqueta-pontos {
-    background-color: #FFD54F;
-    color: #00123B;
+    background: var(--amarelo);
+    color: var(--azul)
 }
+
 .texto-impacto-perfil {
-    margin: 0;
+    margin: 0
 }
+
 .secao-linha-tempo-impacto {
-    width: 100%;
-    background-color: #FFFFFF;
-    padding: 40px 0 44px;
-    display: flex;
-    justify-content: center;
+    padding: 40px 0 44px
 }
-.conteiner-linha-tempo-impacto {
-    max-width: 1200px;
-    width: 100%;
-    padding: 0 24px;
-}
-.titulo-linha-tempo-impacto {
-    font-size: 24px;
-    font-weight: 700;
-    color: #00123B;
-    margin: 0 0 20px 0;
-}
+
 .linha-tempo-impacto {
     position: relative;
     padding-left: 20px;
-    border-left: 2px solid rgba(0, 18, 59, 0.15);
+    border-left: 2px solid var(--azul-15);
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 18px
 }
+
 .etapa-linha-tempo {
     position: relative;
-    padding-left: 12px;
+    padding-left: 12px
 }
-.etapa-linha-tempo::before {
+
+.etapa-linha-tempo:before {
     content: "";
     position: absolute;
     left: -22px;
@@ -395,51 +447,59 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: #2E8B57;
+    background: var(--verde)
 }
+
 .ano-linha-tempo {
     display: inline-block;
     font-size: 13px;
     font-weight: 700;
-    color: #00123B;
-    margin-bottom: 4px;
+    color: var(--azul);
+    margin-bottom: 4px
 }
+
 .texto-linha-tempo {
     font-size: 12px;
-    color: #00123B;
+    color: var(--azul);
     line-height: 1.5;
-    margin: 0;
+    margin: 0
 }
+
 .secao-cta-impacto-final {
     width: 100%;
-    background-color: #00123B;
+    background: var(--azul);
     padding: 40px 0 48px;
     display: flex;
-    justify-content: center;
+    justify-content: center
 }
+
 .conteiner-cta-impacto-final {
     max-width: 1200px;
     width: 100%;
     padding: 0 24px;
-    text-align: center;
+    text-align: center
 }
+
 .titulo-cta-impacto-final {
     font-size: 26px;
     font-weight: 700;
-    color: #FFFFFF;
-    margin: 0 0 10px 0;
+    color: var(--branco);
+    margin: 0 0 10px
 }
+
 .subtitulo-cta-impacto-final {
     font-size: 13px;
-    color: #FFFFFF;
-    opacity: 0.9;
-    margin: 0 0 20px 0;
+    color: var(--branco);
+    opacity: .9;
+    margin: 0 0 20px
 }
+
 .linha-botoes-cta-impacto {
     display: flex;
     justify-content: center;
-    gap: 14px;
+    gap: 14px
 }
+
 .botao-cta-impacto-principal,
 .botao-cta-impacto-secundario {
     display: inline-flex;
@@ -451,24 +511,28 @@
     font-weight: 700;
     text-decoration: none;
     cursor: pointer;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 6px 16px var(--s18)
 }
+
 .botao-cta-impacto-principal {
-    background-color: #2E8B57;
-    color: #FFFFFF;
+    background: var(--verde);
+    color: var(--branco)
 }
+
 .botao-cta-impacto-secundario {
-    background-color: #FFFFFF;
-    color: #00123B;
+    background: var(--branco);
+    color: var(--azul)
 }
+
 .botao-cta-impacto-principal:hover,
 .botao-cta-impacto-secundario:hover {
-    opacity: 0.96;
+    opacity: .96
 }
+
 .linha-divisoria-impacto {
-    border: none;
+    border: 0;
     height: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    border-top: 1px solid rgba(0, 0, 0, .06);
     width: 15%;
-    margin: 0 auto;
+    margin: 0 auto
 }
