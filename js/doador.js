@@ -1,15 +1,6 @@
 const qs = (s, c = document) => c.querySelector(s);
 const qsa = (s, c = document) => [...c.querySelectorAll(s)];
 
-const carregarFragmento = (url, id) => {
-  const area = document.getElementById(id);
-  if (!area) return;
-  fetch(url)
-    .then((r) => r.text())
-    .then((html) => (area.innerHTML = html))
-    .catch(() => {});
-};
-
 const ativarRevelacao = () => {
   document.body.classList.add("js-ativo");
 
@@ -41,48 +32,16 @@ const ativarAbasPerfis = () => {
   if (!abas.length || !paineis.length) return;
 
   const ativar = (id) => {
-    abas.forEach((a) =>
-      a.classList.toggle("ativa", a.dataset.aba === id)
-    );
-    paineis.forEach((p) =>
-      p.classList.toggle("ativo", p.id === id)
-    );
+    abas.forEach((a) => a.classList.toggle("ativa", a.dataset.aba === id));
+    paineis.forEach((p) => p.classList.toggle("ativo", p.id === id));
   };
 
-  abas.forEach((aba) => {
-    aba.addEventListener("click", () => ativar(aba.dataset.aba));
-  });
+  abas.forEach((aba) => aba.addEventListener("click", () => ativar(aba.dataset.aba)));
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-  carregarFragmento("../Navegacao/Navbar/navbar.html", "area-navbar");
-  carregarFragmento("../Navegacao/Footer/footer.html", "area-footer");
-  ativarRevelacao();
-  ativarAbasPerfis();
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const botaoMenu = document.querySelector(".botao-menu");
-  const menu = document.querySelector(".menu");
-
+const ativarMenu = () => {
+  const botaoMenu = qs(".botao-menu");
+  const menu = qs(".menu");
   if (!botaoMenu || !menu) return;
 
   botaoMenu.addEventListener("click", () => {
@@ -90,11 +49,16 @@ document.addEventListener("DOMContentLoaded", () => {
     botaoMenu.setAttribute("aria-expanded", ativo ? "true" : "false");
   });
 
-  // Fecha ao clicar em um item
-  menu.querySelectorAll(".item-menu").forEach((link) => {
+  qsa(".item-menu", menu).forEach((link) => {
     link.addEventListener("click", () => {
       menu.classList.remove("ativo");
       botaoMenu.setAttribute("aria-expanded", "false");
     });
   });
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  ativarRevelacao();
+  ativarAbasPerfis();
+  ativarMenu();
 });

@@ -1,20 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
   document.body.classList.add("js-ativo");
 
-  const grupos = document.querySelectorAll("[data-animar-grupo]");
+  const elementos = [...document.querySelectorAll("[data-animar-grupo]")].flatMap(
+    (grupo) =>
+      [...grupo.querySelectorAll(".animar-entrada")].map((el, i) => {
+        el.style.transitionDelay = `${(i * 0.08).toFixed(2)}s`;
+        return el;
+      })
+  );
 
-  const prepararAtrasos = (container) => {
-    const itens = container.querySelectorAll(".animar-entrada");
-    itens.forEach((el, i) => {
-      el.style.transitionDelay = `${(i * 0.08).toFixed(2)}s`;
+  const botaoMenu = document.querySelector(".botao-menu");
+  const menu = document.querySelector(".menu");
+
+  if (botaoMenu && menu) {
+    botaoMenu.addEventListener("click", () => {
+      const ativo = menu.classList.toggle("ativo");
+      botaoMenu.setAttribute("aria-expanded", ativo ? "true" : "false");
     });
-    return itens;
-  };
 
-  const elementos = [];
-  grupos.forEach((grupo) => {
-    elementos.push(...prepararAtrasos(grupo));
-  });
+    menu.querySelectorAll(".item-menu").forEach((link) => {
+      link.addEventListener("click", () => {
+        menu.classList.remove("ativo");
+        botaoMenu.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
 
   if (!elementos.length) return;
 
@@ -34,41 +44,4 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     elementos.forEach((el) => el.classList.add("visivel"));
   }
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const botaoMenu = document.querySelector(".botao-menu");
-  const menu = document.querySelector(".menu");
-
-  if (!botaoMenu || !menu) return;
-
-  botaoMenu.addEventListener("click", () => {
-    const ativo = menu.classList.toggle("ativo");
-    botaoMenu.setAttribute("aria-expanded", ativo ? "true" : "false");
-  });
-
-  // Fecha ao clicar em um item
-  menu.querySelectorAll(".item-menu").forEach((link) => {
-    link.addEventListener("click", () => {
-      menu.classList.remove("ativo");
-      botaoMenu.setAttribute("aria-expanded", "false");
-    });
-  });
 });

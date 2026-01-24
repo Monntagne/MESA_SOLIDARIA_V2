@@ -1,186 +1,113 @@
 document.addEventListener("DOMContentLoaded", () => {
-  carregarFragmento("../Navegacao/Navbar/navbar.html", "area-navbar");
-  carregarFragmento("../Navegacao/Footer/footer.html", "area-footer");
-
-  const numerosKpi = document.querySelectorAll(
+  const numeros = document.querySelectorAll(
     ".numero-indicador-impacto, .numero-kpi-hero, .porcentagem-central"
   );
 
-  const barrasMes = document.querySelectorAll(".barra-mes");
-  const blocoGraficoBarras = document.querySelector(".bloco-grafico-barras");
+  const barras = document.querySelectorAll(".barra-mes");
+  const blocoBarras = document.querySelector(".bloco-grafico-barras");
 
-  const elementosAnimados = document.querySelectorAll(".impacto-animado");
+  const animados = document.querySelectorAll(".impacto-animado");
   const secaoIndicadores = document.querySelector(".secao-indicadores-impacto");
   const secaoGraficos = document.querySelector(".secao-graficos-impacto");
 
-  let animacaoNumerosJaRodou = false;
+  let numerosRodou = false;
+  let barrasRodou = false;
 
-  function animarNumeros() {
-    if (animacaoNumerosJaRodou) return;
-    animacaoNumerosJaRodou = true;
+  const maxValor = [...barras].reduce(
+    (m, b) => Math.max(m, Number(b.dataset.valor || 0)),
+    0
+  );
 
-    numerosKpi.forEach((el) => {
-      const attr = el.dataset.contador;
-      let alvo;
-      let sufixo = "";
+  const animarNumeros = () => {
+    if (numerosRodou) return;
+    numerosRodou = true;
 
-      if (attr && attr.trim() !== "") {
-        alvo = Number(String(attr).replace(/[^\d]/g, "")) || 0;
-      } else {
-        const textoOriginal = el.textContent || "";
-        const numExtraido = Number(textoOriginal.replace(/[^\d]/g, ""));
+    numeros.forEach((el) => {
+      const raw = (el.dataset.contador ?? el.textContent ?? "").trim();
+      const alvo = Number(raw.replace(/[^\d]/g, "")) || 0;
+      if (!alvo) return;
 
-        if (!Number.isFinite(numExtraido) || numExtraido === 0) return;
-
-        alvo = numExtraido;
-
-        if (textoOriginal.includes("%")) {
-          sufixo = "%";
-        }
-      }
-
-      if (el.classList.contains("porcentagem-central") && !sufixo) {
-        sufixo = "%";
-      }
-
-      let atual = 0;
+      const sufixo = raw.includes("%") || el.classList.contains("porcentagem-central") ? "%" : "";
       const duracao = 1200;
       const intervalo = 30;
-      const passos = Math.max(Math.floor(duracao / intervalo), 1);
-      const incremento = alvo / passos;
+      const passos = Math.max((duracao / intervalo) | 0, 1);
+      const inc = alvo / passos;
 
-      const atualizarTexto = () => {
-        const valorFormatado = Math.round(atual).toLocaleString("pt-BR");
-        el.textContent = valorFormatado + sufixo;
-      };
+      let atual = 0;
 
-      atualizarTexto();
+      const render = () => (el.textContent = `${Math.round(atual).toLocaleString("pt-BR")}${sufixo}`);
+      render();
 
-      const timer = setInterval(() => {
-        atual += incremento;
+      const t = setInterval(() => {
+        atual += inc;
         if (atual >= alvo) {
           atual = alvo;
-          clearInterval(timer);
+          clearInterval(t);
         }
-        atualizarTexto();
+        render();
       }, intervalo);
     });
-  }
+  };
 
-  let animacaoBarrasJaRodou = false;
-  let maxValor = 0;
+  const animarBarras = () => {
+    if (barrasRodou || !maxValor) return;
+    barrasRodou = true;
 
-  barrasMes.forEach((barra) => {
-    const valor = Number(barra.dataset.valor || "0");
-    if (valor > maxValor) maxValor = valor;
-  });
-
-  function animarBarras() {
-    if (animacaoBarrasJaRodou || maxValor === 0) return;
-    animacaoBarrasJaRodou = true;
-
-    barrasMes.forEach((barra) => {
-      const valor = Number(barra.dataset.valor || "0");
-      const altura = Math.min((valor / maxValor) * 100, 100);
-      barra.style.height = altura + "%";
+    barras.forEach((b) => {
+      const v = Number(b.dataset.valor || 0);
+      b.style.height = `${Math.min((v / maxValor) * 100, 100)}%`;
     });
-  }
+  };
+
+  const ativarTudo = () => {
+    animados.forEach((el) => el.classList.add("visivel"));
+    animarNumeros();
+    animarBarras();
+  };
 
   if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(
-      (entries, obs) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
+    const obs = new IntersectionObserver(
+      (entradas, o) => {
+        entradas.forEach((e) => {
+          if (!e.isIntersecting) return;
 
-          const el = entry.target;
+          const el = e.target;
 
-          if (el.classList.contains("impacto-animado")) {
-            el.classList.add("visivel");
-          }
-
-          if (
-            el.classList.contains("secao-indicadores-impacto") ||
-            el.classList.contains("secao-graficos-impacto")
-          ) {
+          if (el.classList.contains("impacto-animado")) el.classList.add("visivel");
+          if (el === secaoIndicadores || el === secaoGraficos) {
             animarNumeros();
             animarBarras();
           }
+          if (el === blocoBarras) animarBarras();
 
-          if (el === blocoGraficoBarras) {
-            animarBarras();
-          }
-
-          obs.unobserve(el);
+          o.unobserve(el);
         });
       },
-      {
-        threshold: 0.3,
-      }
+      { threshold: 0.3 }
     );
 
-    elementosAnimados.forEach((el) => observer.observe(el));
-    if (secaoIndicadores) observer.observe(secaoIndicadores);
-    if (secaoGraficos) observer.observe(secaoGraficos);
-    if (blocoGraficoBarras && !blocoGraficoBarras.classList.contains("impacto-animado")) {
-      observer.observe(blocoGraficoBarras);
-    }
+    animados.forEach((el) => obs.observe(el));
+    if (secaoIndicadores) obs.observe(secaoIndicadores);
+    if (secaoGraficos) obs.observe(secaoGraficos);
+    if (blocoBarras && !blocoBarras.classList.contains("impacto-animado")) obs.observe(blocoBarras);
   } else {
-    elementosAnimados.forEach((el) => el.classList.add("visivel"));
-    animarNumeros();
-    animarBarras();
+    ativarTudo();
   }
-});
 
-function carregarFragmento(url, idAlvo) {
-  fetch(url)
-    .then((resposta) => resposta.text())
-    .then((html) => {
-      const area = document.getElementById(idAlvo);
-      if (area) area.innerHTML = html;
-    })
-    .catch((erro) => {
-      console.error("Erro ao carregar fragmento:", url, erro);
-    });
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
   const botaoMenu = document.querySelector(".botao-menu");
   const menu = document.querySelector(".menu");
 
-  if (!botaoMenu || !menu) return;
-
-  botaoMenu.addEventListener("click", () => {
-    const ativo = menu.classList.toggle("ativo");
-    botaoMenu.setAttribute("aria-expanded", ativo ? "true" : "false");
-  });
-
-  // Fecha ao clicar em um item
-  menu.querySelectorAll(".item-menu").forEach((link) => {
-    link.addEventListener("click", () => {
-      menu.classList.remove("ativo");
-      botaoMenu.setAttribute("aria-expanded", "false");
+  if (botaoMenu && menu) {
+    botaoMenu.addEventListener("click", () => {
+      const ativo = menu.classList.toggle("ativo");
+      botaoMenu.setAttribute("aria-expanded", ativo ? "true" : "false");
     });
-  });
+
+    menu.querySelectorAll(".item-menu").forEach((item) => {
+      item.addEventListener("click", () => {
+        menu.classList.remove("ativo");
+        botaoMenu.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
 });

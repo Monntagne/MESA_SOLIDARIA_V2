@@ -2,187 +2,140 @@ document.addEventListener("DOMContentLoaded", () => {
   const botaoMenu = document.querySelector(".botao-menu");
   const menu = document.querySelector(".menu");
 
-  if (!botaoMenu || !menu) return;
-
-  botaoMenu.addEventListener("click", () => {
-    const ativo = menu.classList.toggle("ativo");
-    botaoMenu.setAttribute("aria-expanded", ativo ? "true" : "false");
-  });
-
-  // Fecha ao clicar em um item
-  menu.querySelectorAll(".item-menu").forEach((link) => {
-    link.addEventListener("click", () => {
-      menu.classList.remove("ativo");
-      botaoMenu.setAttribute("aria-expanded", "false");
+  if (botaoMenu && menu) {
+    botaoMenu.addEventListener("click", () => {
+      const ativo = menu.classList.toggle("ativo");
+      botaoMenu.setAttribute("aria-expanded", ativo ? "true" : "false");
     });
-  });
-});
 
-
-
-
-
-
-
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const carregarFragmento = (idDestino, caminho) => {
-    const destino = document.getElementById(idDestino);
-    if (!destino) return;
-
-    fetch(caminho)
-      .then((res) => res.text())
-      .then((html) => {
-        destino.innerHTML = html;
-      })
-      .catch((erro) => {
-        console.error(`Erro ao carregar ${caminho}:`, erro);
+    menu.querySelectorAll(".item-menu").forEach((link) => {
+      link.addEventListener("click", () => {
+        menu.classList.remove("ativo");
+        botaoMenu.setAttribute("aria-expanded", "false");
       });
+    });
+  }
+
+  const pagina = document.querySelector(".pagina-cadastro-beneficiario");
+  if (!pagina) return;
+
+  const formulario = pagina.querySelector(".formulario-cadastro-beneficiario");
+  if (!formulario) return;
+
+  const $ = (id) => document.getElementById(id);
+
+  const campos = {
+    nome: $("nome-completo"),
+    cpf: $("cpf"),
+    telefone: $("telefone"),
+    email: $("email"),
+    dataNascimento: $("data-nascimento"),
+    cep: $("cep"),
+    cidade: $("cidade"),
+    estado: $("estado"),
+    bairro: $("bairro"),
+    logradouro: $("logradouro"),
+    numero: $("numero"),
+    moradores: $("quantidade-moradores"),
+    renda: $("renda-familiar"),
+    restricoes: $("restricoes-alimentares"),
+    observacoes: $("observacoes"),
+    senha: $("senha-acesso"),
+    confirmacao: $("confirmacao-senha"),
   };
 
-  carregarFragmento("area-navbar", "../../Navegacao/Navbar/navbar.html");
-  carregarFragmento("area-footer", "../../Navegacao/Footer/footer.html");
+  const blocos = {
+    endereco: $("bloco-endereco"),
+    situacao: $("bloco-situacao-familiar"),
+    saude: $("bloco-saude-alimentacao"),
+    acesso: $("bloco-acesso-plataforma"),
+  };
 
-  const paginaCadastro = document.querySelector(".pagina-cadastro-beneficiario");
-  if (!paginaCadastro) return;
-
-  const formulario = paginaCadastro.querySelector(".formulario-cadastro-beneficiario");
-
-  const nomeInput = document.getElementById("nome-completo");
-  const cpfInput = document.getElementById("cpf");
-  const telefoneInput = document.getElementById("telefone");
-  const emailInput = document.getElementById("email");
-  const dataNascimentoInput = document.getElementById("data-nascimento");
-
-  const cepInput = document.getElementById("cep");
-  const cidadeInput = document.getElementById("cidade");
-  const estadoInput = document.getElementById("estado");
-  const bairroInput = document.getElementById("bairro");
-  const logradouroInput = document.getElementById("logradouro");
-  const numeroInput = document.getElementById("numero");
-
-  const moradoresInput = document.getElementById("quantidade-moradores");
-  const rendaSelect = document.getElementById("renda-familiar");
-
-  const restricoesInput = document.getElementById("restricoes-alimentares");
-  const observacoesInput = document.getElementById("observacoes");
-
-  const senhaInput = document.getElementById("senha-acesso");
-  const confirmacaoInput = document.getElementById("confirmacao-senha");
-
-  const blocoEndereco = document.getElementById("bloco-endereco");
-  const blocoSituacao = document.getElementById("bloco-situacao-familiar");
-  const blocoSaude = document.getElementById("bloco-saude-alimentacao");
-  const blocoAcesso = document.getElementById("bloco-acesso-plataforma");
-
-  const erroEmail = document.getElementById("erro-email");
-  const erroSenha = document.getElementById("erro-senha");
-  const erroConfirmacao = document.getElementById("erro-confirmacao-senha");
-  const erroDataNascimento = document.getElementById("erro-data-nascimento");
+  const erros = {
+    email: $("erro-email"),
+    senha: $("erro-senha"),
+    confirmacao: $("erro-confirmacao-senha"),
+    dataNascimento: $("erro-data-nascimento"),
+  };
 
   const botaoPrincipal = document.querySelector(".botao-principal-cadastro");
-
-  if (!formulario) return;
 
   let enderecoLiberado = false;
   let situacaoLiberada = false;
   let saudeLiberada = false;
 
-  if (blocoEndereco) blocoEndereco.style.display = "none";
-  if (blocoSituacao) blocoSituacao.style.display = "none";
-  if (blocoSaude) blocoSaude.style.display = "none";
-  if (blocoAcesso) blocoAcesso.style.display = "none";
+  const esconder = (el) => el && (el.style.display = "none");
+  const mostrar = (el) => el && (el.style.display = "block");
 
-  // função pra trocar o texto do botão
-  const atualizarTextoBotao = () => {
+  esconder(blocos.endereco);
+  esconder(blocos.situacao);
+  esconder(blocos.saude);
+  esconder(blocos.acesso);
+
+  const setTextoBotao = () => {
     if (!botaoPrincipal) return;
-
-    const acessoVisivel =
-      blocoAcesso && blocoAcesso.style.display !== "none";
-
-    if (acessoVisivel) {
-      botaoPrincipal.textContent = "Concluir cadastro";
-    } else {
-      botaoPrincipal.textContent = "Continuar";
-    }
+    const acessoVisivel = blocos.acesso && blocos.acesso.style.display !== "none";
+    botaoPrincipal.textContent = acessoVisivel ? "Concluir cadastro" : "Continuar";
   };
 
-  atualizarTextoBotao();
+  const setErro = (el, msg) => el && (el.textContent = msg || "");
+  const invalido = (el, on) => el && el.classList.toggle("campo-invalido", !!on);
+
+  const limparErros = () => {
+    setErro(erros.email, "");
+    setErro(erros.senha, "");
+    setErro(erros.confirmacao, "");
+    setErro(erros.dataNascimento, "");
+
+    [
+      campos.email,
+      campos.senha,
+      campos.confirmacao,
+      campos.dataNascimento,
+      campos.nome,
+      campos.cpf,
+      campos.telefone,
+    ].forEach((c) => invalido(c, false));
+  };
 
   let dataMinima = null;
   let dataMaxima = null;
 
-  if (dataNascimentoInput) {
-    const hoje = new Date();
-
-    dataMaxima = new Date(
-      hoje.getFullYear() - 18,
-      hoje.getMonth(),
-      hoje.getDate()
-    );
-
-    dataMinima = new Date(
-      hoje.getFullYear() - 100,
-      hoje.getMonth(),
-      hoje.getDate()
-    );
-
-    const formatarData = (data) => {
-      const ano = data.getFullYear();
-      const mes = String(data.getMonth() + 1).padStart(2, "0");
-      const dia = String(data.getDate()).padStart(2, "0");
-      return `${ano}-${mes}-${dia}`;
-    };
-
-    dataNascimentoInput.max = formatarData(dataMaxima);
-    dataNascimentoInput.min = formatarData(dataMinima);
-  }
-
-  const limparErros = () => {
-    if (erroEmail) erroEmail.textContent = "";
-    if (erroSenha) erroSenha.textContent = "";
-    if (erroConfirmacao) erroConfirmacao.textContent = "";
-    if (erroDataNascimento) erroDataNascimento.textContent = "";
-
-    [
-      emailInput,
-      senhaInput,
-      confirmacaoInput,
-      dataNascimentoInput,
-      nomeInput,
-      cpfInput,
-      telefoneInput
-    ].forEach((campo) => {
-      if (campo) campo.classList.remove("campo-invalido");
-    });
+  const formatarData = (data) => {
+    const ano = data.getFullYear();
+    const mes = String(data.getMonth() + 1).padStart(2, "0");
+    const dia = String(data.getDate()).padStart(2, "0");
+    return `${ano}-${mes}-${dia}`;
   };
 
+  if (campos.dataNascimento) {
+    const hoje = new Date();
+    dataMaxima = new Date(hoje.getFullYear() - 18, hoje.getMonth(), hoje.getDate());
+    dataMinima = new Date(hoje.getFullYear() - 100, hoje.getMonth(), hoje.getDate());
+    campos.dataNascimento.max = formatarData(dataMaxima);
+    campos.dataNascimento.min = formatarData(dataMinima);
+  }
+
   const validarEmail = () => {
-    if (!emailInput || !erroEmail) return true;
+    if (!campos.email || !erros.email) return true;
 
-    erroEmail.textContent = "";
-    emailInput.classList.remove("campo-invalido");
+    const valor = campos.email.value.trim().toLowerCase();
+    campos.email.value = valor;
 
-    const valor = emailInput.value.trim().toLowerCase();
-    emailInput.value = valor;
+    setErro(erros.email, "");
+    invalido(campos.email, false);
 
-    const regexEmail = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+    const regex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
 
     if (!valor) {
-      erroEmail.textContent = "Informe um e-mail.";
-      emailInput.classList.add("campo-invalido");
+      setErro(erros.email, "Informe um e-mail.");
+      invalido(campos.email, true);
       return false;
     }
 
-    if (!regexEmail.test(valor)) {
-      erroEmail.textContent =
-        "Digite um e-mail válido, ex: seuemail@exemplo.com.";
-      emailInput.classList.add("campo-invalido");
+    if (!regex.test(valor)) {
+      setErro(erros.email, "Digite um e-mail válido, ex: seuemail@exemplo.com.");
+      invalido(campos.email, true);
       return false;
     }
 
@@ -190,64 +143,49 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const validarSenha = () => {
-    if (!senhaInput || !erroSenha) return true;
+    if (!campos.senha || !erros.senha) return true;
 
-    erroSenha.textContent = "";
-    senhaInput.classList.remove("campo-invalido");
+    setErro(erros.senha, "");
+    invalido(campos.senha, false);
 
-    const valor = senhaInput.value;
-    const faltando = [];
-
-    if (!valor) {
-      erroSenha.textContent = "Crie uma senha.";
-      senhaInput.classList.add("campo-invalido");
+    const v = campos.senha.value;
+    if (!v) {
+      setErro(erros.senha, "Crie uma senha.");
+      invalido(campos.senha, true);
       return false;
     }
 
-    if (valor.length < 8) {
-      faltando.push("no mínimo 8 caracteres");
-    }
-    if (!/[A-Z]/.test(valor)) {
-      faltando.push("uma letra maiúscula");
-    }
-    if (!/[a-z]/.test(valor)) {
-      faltando.push("uma letra minúscula");
-    }
-    if (!/\d/.test(valor)) {
-      faltando.push("um número");
-    }
-    if (!/[^A-Za-z0-9]/.test(valor)) {
-      faltando.push("um caractere especial");
-    }
+    const faltando = [];
+    if (v.length < 8) faltando.push("no mínimo 8 caracteres");
+    if (!/[A-Z]/.test(v)) faltando.push("uma letra maiúscula");
+    if (!/[a-z]/.test(v)) faltando.push("uma letra minúscula");
+    if (!/\d/.test(v)) faltando.push("um número");
+    if (!/[^A-Za-z0-9]/.test(v)) faltando.push("um caractere especial");
 
-    if (faltando.length > 0) {
-      erroSenha.textContent =
-        "A senha deve conter: " + faltando.join(", ") + ".";
-      senhaInput.classList.add("campo-invalido");
+    if (faltando.length) {
+      setErro(erros.senha, `A senha deve conter: ${faltando.join(", ")}.`);
+      invalido(campos.senha, true);
       return false;
     }
 
     return true;
   };
 
-  const validarConfirmacaoSenha = () => {
-    if (!senhaInput || !confirmacaoInput || !erroConfirmacao) return true;
+  const validarConfirmacao = () => {
+    if (!campos.senha || !campos.confirmacao || !erros.confirmacao) return true;
 
-    erroConfirmacao.textContent = "";
-    confirmacaoInput.classList.remove("campo-invalido");
+    setErro(erros.confirmacao, "");
+    invalido(campos.confirmacao, false);
 
-    const senha = senhaInput.value;
-    const confirmacao = confirmacaoInput.value;
-
-    if (!confirmacao) {
-      erroConfirmacao.textContent = "Confirme a senha.";
-      confirmacaoInput.classList.add("campo-invalido");
+    if (!campos.confirmacao.value) {
+      setErro(erros.confirmacao, "Confirme a senha.");
+      invalido(campos.confirmacao, true);
       return false;
     }
 
-    if (senha !== confirmacao) {
-      erroConfirmacao.textContent = "A confirmação precisa ser igual à senha.";
-      confirmacaoInput.classList.add("campo-invalido");
+    if (campos.senha.value !== campos.confirmacao.value) {
+      setErro(erros.confirmacao, "A confirmação precisa ser igual à senha.");
+      invalido(campos.confirmacao, true);
       return false;
     }
 
@@ -255,302 +193,196 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const validarDataNascimento = () => {
-    if (!dataNascimentoInput || !erroDataNascimento) return true;
+    if (!campos.dataNascimento || !erros.dataNascimento) return true;
 
-    erroDataNascimento.textContent = "";
-    dataNascimentoInput.classList.remove("campo-invalido");
+    setErro(erros.dataNascimento, "");
+    invalido(campos.dataNascimento, false);
 
-    const valor = dataNascimentoInput.value;
+    const valor = campos.dataNascimento.value;
     if (!valor) {
-      erroDataNascimento.textContent = "Informe a data de nascimento.";
-      dataNascimentoInput.classList.add("campo-invalido");
+      setErro(erros.dataNascimento, "Informe a data de nascimento.");
+      invalido(campos.dataNascimento, true);
       return false;
     }
 
-    const dataNasc = new Date(valor);
+    const data = new Date(valor);
 
-    if (dataMinima && dataNasc < dataMinima) {
-      erroDataNascimento.textContent =
-        "Idade máxima para cadastro é de 100 anos.";
-      dataNascimentoInput.classList.add("campo-invalido");
+    if (dataMinima && data < dataMinima) {
+      setErro(erros.dataNascimento, "Idade máxima para cadastro é de 100 anos.");
+      invalido(campos.dataNascimento, true);
       return false;
     }
 
-    if (dataMaxima && dataNasc > dataMaxima) {
-      erroDataNascimento.textContent =
-        "Você precisa ter pelo menos 18 anos para se cadastrar.";
-      dataNascimentoInput.classList.add("campo-invalido");
+    if (dataMaxima && data > dataMaxima) {
+      setErro(erros.dataNascimento, "Você precisa ter pelo menos 18 anos para se cadastrar.");
+      invalido(campos.dataNascimento, true);
       return false;
     }
 
     return true;
   };
 
-  const validarDadosPessoaisBasico = () => {
+  const validarDadosPessoais = () => {
+    const { nome, cpf, telefone, dataNascimento, email } = campos;
+    if (!nome || !cpf || !telefone || !dataNascimento || !email) return false;
+
     let ok = true;
 
-    if (!nomeInput || !cpfInput || !telefoneInput || !dataNascimentoInput || !emailInput) {
-      return false;
-    }
+    const nomeV = nome.value.trim();
+    const telNum = telefone.value.replace(/\D/g, "");
+    const cpfNum = cpf.value.replace(/\D/g, "");
 
-    const nome = nomeInput.value.trim();
-    const telefoneMascara = telefoneInput.value;
-    const telefoneNumerico = telefoneMascara.replace(/\D/g, "");
-    const cpfNumerico = cpfInput.value.replace(/\D/g, "");
+    [nome, cpf, telefone].forEach((c) => invalido(c, false));
 
-    [nomeInput, cpfInput, telefoneInput].forEach((campo) => {
-      if (campo) campo.classList.remove("campo-invalido");
-    });
-
-    if (!nome) {
-      nomeInput.classList.add("campo-invalido");
-      ok = false;
-    }
-
-    if (cpfNumerico.length !== 11) {
-      cpfInput.classList.add("campo-invalido");
-      ok = false;
-    }
-
-    if (!telefoneNumerico || telefoneNumerico.length !== 11) {
-      telefoneInput.classList.add("campo-invalido");
-      ok = false;
-    }
-
+    if (!nomeV) (invalido(nome, true), (ok = false));
+    if (cpfNum.length !== 11) (invalido(cpf, true), (ok = false));
+    if (telNum.length !== 11) (invalido(telefone, true), (ok = false));
     if (!validarEmail()) ok = false;
     if (!validarDataNascimento()) ok = false;
 
     return ok;
   };
 
-  const validarEnderecoBasico = () => {
-    if (!cepInput || !cidadeInput || !estadoInput || !bairroInput || !logradouroInput || !numeroInput) {
-      return false;
-    }
+  const validarEndereco = () => {
+    const { cep, cidade, estado, bairro, logradouro, numero } = campos;
+    if (!cep || !cidade || !estado || !bairro || !logradouro || !numero) return false;
 
-    const cepNumerico = cepInput.value.replace(/\D/g, "");
+    const cepNum = cep.value.replace(/\D/g, "");
+    if (cepNum.length !== 8) return false;
 
-    if (cepNumerico.length !== 8) return false;
-    if (!cidadeInput.value.trim()) return false;
-    if (!estadoInput.value.trim()) return false;
-    if (!bairroInput.value.trim()) return false;
-    if (!logradouroInput.value.trim()) return false;
-    if (!numeroInput.value.trim()) return false;
-
-    return true;
+    return (
+      !!cidade.value.trim() &&
+      !!estado.value.trim() &&
+      !!bairro.value.trim() &&
+      !!logradouro.value.trim() &&
+      !!numero.value.trim()
+    );
   };
 
-  const validarSituacaoBasico = () => {
-    if (!moradoresInput || !rendaSelect) return false;
+  const validarSituacao = () => {
+    const { moradores, renda } = campos;
+    if (!moradores || !renda) return false;
 
-    const moradores = parseInt(moradoresInput.value, 10);
-    if (Number.isNaN(moradores) || moradores < 1) return false;
-    if (!rendaSelect.value) return false;
-
-    return true;
-  };
-
-  const validarSaudeBasico = () => {
-    return true;
+    const m = parseInt(moradores.value, 10);
+    if (Number.isNaN(m) || m < 1) return false;
+    return !!renda.value;
   };
 
   const tentarLiberarEndereco = () => {
-    if (enderecoLiberado || !blocoEndereco) return;
-    if (validarDadosPessoaisBasico()) {
-      blocoEndereco.style.display = "block";
+    if (enderecoLiberado || !blocos.endereco) return;
+    if (validarDadosPessoais()) {
+      mostrar(blocos.endereco);
       enderecoLiberado = true;
-      atualizarTextoBotao();
+      setTextoBotao();
     }
   };
 
   const tentarLiberarSituacao = () => {
-    if (!enderecoLiberado || situacaoLiberada || !blocoSituacao) return;
-    if (validarEnderecoBasico()) {
-      blocoSituacao.style.display = "block";
+    if (!enderecoLiberado || situacaoLiberada || !blocos.situacao) return;
+    if (validarEndereco()) {
+      mostrar(blocos.situacao);
       situacaoLiberada = true;
-      atualizarTextoBotao();
+      setTextoBotao();
     }
   };
 
   const tentarLiberarSaude = () => {
-    if (!situacaoLiberada || saudeLiberada || !blocoSaude) return;
-    if (validarSituacaoBasico()) {
-      blocoSaude.style.display = "block";
+    if (!situacaoLiberada || saudeLiberada || !blocos.saude) return;
+    if (validarSituacao()) {
+      mostrar(blocos.saude);
       saudeLiberada = true;
-      atualizarTextoBotao();
+      setTextoBotao();
     }
   };
 
   const tentarLiberarAcesso = () => {
-    if (!saudeLiberada || !blocoAcesso) return;
-    if (validarSaudeBasico()) {
-      blocoAcesso.style.display = "block";
-      atualizarTextoBotao();
-    }
+    if (!saudeLiberada || !blocos.acesso) return;
+    mostrar(blocos.acesso);
+    setTextoBotao();
   };
 
-  // CEP
-  if (cepInput) {
-    cepInput.addEventListener("input", () => {
-      let valor = cepInput.value;
-      valor = valor.replace(/\D/g, "");
+  const mask = (el, max, fmt) => {
+    if (!el) return;
+    el.addEventListener("input", () => {
+      invalido(el, false);
+      let v = el.value.replace(/\D/g, "").slice(0, max);
+      el.value = fmt(v);
+    });
+  };
 
-      if (valor.length > 8) {
-        valor = valor.slice(0, 8);
-      }
+  mask(campos.cep, 8, (v) => (v.length > 5 ? `${v.slice(0, 5)}-${v.slice(5)}` : v));
 
-      if (valor.length > 5) {
-        cepInput.value = valor.slice(0, 5) + "-" + valor.slice(5);
-      } else {
-        cepInput.value = valor;
-      }
+  mask(campos.cpf, 11, (v) => {
+    if (v.length > 9) return `${v.slice(0, 3)}.${v.slice(3, 6)}.${v.slice(6, 9)}-${v.slice(9)}`;
+    if (v.length > 6) return `${v.slice(0, 3)}.${v.slice(3, 6)}.${v.slice(6)}`;
+    if (v.length > 3) return `${v.slice(0, 3)}.${v.slice(3)}`;
+    return v;
+  });
+
+  mask(campos.telefone, 11, (v) => {
+    if (!v) return "";
+    if (v.length <= 2) return `(${v}`;
+    if (v.length <= 7) return `(${v.slice(0, 2)}) ${v.slice(2)}`;
+    return `(${v.slice(0, 2)}) ${v.slice(2, 7)}-${v.slice(7)}`;
+  });
+
+  if (campos.nome) campos.nome.addEventListener("input", () => invalido(campos.nome, false));
+
+  if (campos.email) {
+    campos.email.addEventListener("input", () => {
+      campos.email.value = campos.email.value.toLowerCase();
+      setErro(erros.email, "");
+      invalido(campos.email, false);
     });
   }
 
-  // CPF
-  if (cpfInput) {
-    cpfInput.addEventListener("input", () => {
-      cpfInput.classList.remove("campo-invalido");
-
-      let valor = cpfInput.value;
-      valor = valor.replace(/\D/g, "");
-
-      if (valor.length > 11) {
-        valor = valor.slice(0, 11);
-      }
-
-      if (valor.length > 9) {
-        cpfInput.value =
-          valor.slice(0, 3) +
-          "." +
-          valor.slice(3, 6) +
-          "." +
-          valor.slice(6, 9) +
-          "-" +
-          valor.slice(9);
-      } else if (valor.length > 6) {
-        cpfInput.value =
-          valor.slice(0, 3) + "." + valor.slice(3, 6) + "." + valor.slice(6);
-      } else if (valor.length > 3) {
-        cpfInput.value = valor.slice(0, 3) + "." + valor.slice(3);
-      } else {
-        cpfInput.value = valor;
-      }
-    });
-  }
-
-  // Telefone
-  if (telefoneInput) {
-    telefoneInput.addEventListener("input", () => {
-      telefoneInput.classList.remove("campo-invalido");
-
-      let valor = telefoneInput.value;
-      valor = valor.replace(/\D/g, "");
-
-      if (valor.length > 11) {
-        valor = valor.slice(0, 11);
-      }
-
-      if (!valor) {
-        telefoneInput.value = "";
-        return;
-      }
-
-      if (valor.length <= 2) {
-        telefoneInput.value = "(" + valor;
-      } else if (valor.length <= 7) {
-        telefoneInput.value =
-          "(" + valor.slice(0, 2) + ") " + valor.slice(2);
-      } else {
-        telefoneInput.value =
-          "(" +
-          valor.slice(0, 2) +
-          ") " +
-          valor.slice(2, 7) +
-          "-" +
-          valor.slice(7);
-      }
-    });
-  }
-
-  if (nomeInput) {
-    nomeInput.addEventListener("input", () => {
-      nomeInput.classList.remove("campo-invalido");
-    });
-  }
-
-  if (emailInput) {
-    emailInput.addEventListener("input", () => {
-      emailInput.value = emailInput.value.toLowerCase();
-      if (erroEmail) erroEmail.textContent = "";
-      emailInput.classList.remove("campo-invalido");
-    });
-  }
-
-  if (senhaInput) {
-    senhaInput.addEventListener("input", () => {
-      erroSenha.textContent = "";
-      senhaInput.classList.remove("campo-invalido");
+  if (campos.senha) {
+    campos.senha.addEventListener("input", () => {
+      setErro(erros.senha, "");
+      invalido(campos.senha, false);
       validarSenha();
     });
   }
 
-  if (confirmacaoInput) {
-    confirmacaoInput.addEventListener("input", () => {
-      erroConfirmacao.textContent = "";
-      confirmacaoInput.classList.remove("campo-invalido");
-      validarConfirmacaoSenha();
+  if (campos.confirmacao) {
+    campos.confirmacao.addEventListener("input", () => {
+      setErro(erros.confirmacao, "");
+      invalido(campos.confirmacao, false);
+      validarConfirmacao();
     });
   }
 
-  if (dataNascimentoInput) {
-    dataNascimentoInput.addEventListener("change", () => {
-      erroDataNascimento.textContent = "";
-      dataNascimentoInput.classList.remove("campo-invalido");
+  if (campos.dataNascimento) {
+    campos.dataNascimento.addEventListener("change", () => {
+      setErro(erros.dataNascimento, "");
+      invalido(campos.dataNascimento, false);
       validarDataNascimento();
     });
   }
 
-  [nomeInput, cpfInput, telefoneInput, emailInput, dataNascimentoInput].forEach(
-    (campo) => {
-      if (campo) {
-        campo.addEventListener("blur", tentarLiberarEndereco);
-      }
-    }
+  [campos.nome, campos.cpf, campos.telefone, campos.email, campos.dataNascimento].forEach(
+    (c) => c && c.addEventListener("blur", tentarLiberarEndereco)
   );
 
-  [cepInput, cidadeInput, estadoInput, bairroInput, logradouroInput, numeroInput].forEach(
-    (campo) => {
-      if (campo) {
-        campo.addEventListener("blur", tentarLiberarSituacao);
-      }
-    }
+  [campos.cep, campos.cidade, campos.estado, campos.bairro, campos.logradouro, campos.numero].forEach(
+    (c) => c && c.addEventListener("blur", tentarLiberarSituacao)
   );
 
-  [moradoresInput, rendaSelect].forEach((campo) => {
-    if (campo) {
-      campo.addEventListener("blur", tentarLiberarSaude);
-    }
-  });
+  [campos.moradores, campos.renda].forEach((c) => c && c.addEventListener("blur", tentarLiberarSaude));
+  [campos.restricoes, campos.observacoes].forEach((c) => c && c.addEventListener("blur", tentarLiberarAcesso));
 
-  [restricoesInput, observacoesInput].forEach((campo) => {
-    if (campo) {
-      campo.addEventListener("blur", tentarLiberarAcesso);
-    }
-  });
+  setTextoBotao();
 
   formulario.addEventListener("submit", (event) => {
     limparErros();
 
     let valido = true;
-    if (!validarDadosPessoaisBasico()) valido = false;
+    if (!validarDadosPessoais()) valido = false;
     if (!validarEmail()) valido = false;
     if (!validarSenha()) valido = false;
-    if (!validarConfirmacaoSenha()) valido = false;
+    if (!validarConfirmacao()) valido = false;
     if (!validarDataNascimento()) valido = false;
 
-    if (!valido) {
-      event.preventDefault();
-    }
+    if (!valido) event.preventDefault();
   });
 });

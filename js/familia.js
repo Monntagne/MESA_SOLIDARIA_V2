@@ -1,112 +1,81 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Ativa o modo de animação controlado por CSS
   document.body.classList.add("js-ativo");
 
-  const elementosAnimados = Array.from(
-    document.querySelectorAll(".familia-animado")
-  );
+  const elementos = [...document.querySelectorAll(".familia-animado")];
 
-  if (elementosAnimados.length) {
-    // Atraso em cascata (aceita data-atraso)
-    elementosAnimados.forEach((el, i) => {
-      const atrasoAttr = el.getAttribute("data-atraso");
-      const atraso = atrasoAttr !== null ? Number(atrasoAttr) : NaN;
+  const revelar = (el) => el.classList.add("familia-visivel");
 
+  if (elementos.length) {
+    elementos.forEach((el, i) => {
+      const atraso = Number(el.getAttribute("data-atraso"));
       el.style.transitionDelay = Number.isFinite(atraso)
         ? `${atraso}s`
         : `${(i * 0.08).toFixed(2)}s`;
     });
 
-    const revelar = (el) => el.classList.add("familia-visivel");
-
     if ("IntersectionObserver" in window) {
-      const observer = new IntersectionObserver(
-        (entradas, obs) => {
-          entradas.forEach((entrada) => {
-            if (!entrada.isIntersecting) return;
-            revelar(entrada.target);
-            obs.unobserve(entrada.target);
+      const obs = new IntersectionObserver(
+        (entradas, o) => {
+          entradas.forEach((e) => {
+            if (!e.isIntersecting) return;
+            revelar(e.target);
+            o.unobserve(e.target);
           });
         },
         { threshold: 0.2, rootMargin: "0px 0px -10% 0px" }
       );
 
-      elementosAnimados.forEach((el) => observer.observe(el));
+      elementos.forEach((el) => obs.observe(el));
     } else {
-      elementosAnimados.forEach(revelar);
+      elementos.forEach(revelar);
     }
   }
 
-  const linksInternos = document.querySelectorAll('a[href^="#"]');
+  const rolarAte = (alvo) => {
+    if (!alvo) return;
+    window.scrollTo({
+      top: alvo.getBoundingClientRect().top + window.scrollY - 80,
+      behavior: "smooth",
+    });
+  };
 
-  linksInternos.forEach((link) => {
-    link.addEventListener("click", (evento) => {
-      const destinoId = link.getAttribute("href");
-      if (!destinoId || destinoId === "#") return;
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const id = link.getAttribute("href");
+      if (!id || id === "#") return;
 
-      const destinoElemento = document.querySelector(destinoId);
-      if (!destinoElemento) return;
+      const alvo = document.querySelector(id);
+      if (!alvo) return;
 
-      evento.preventDefault();
-
-      const topo =
-        destinoElemento.getBoundingClientRect().top + window.scrollY - 80;
-
-      window.scrollTo({ top: topo, behavior: "smooth" });
+      e.preventDefault();
+      rolarAte(alvo);
     });
   });
-
 
   const botaoIniciar = document.querySelector(".botao-iniciar-cadastro-familia");
   const secaoCadastro = document.getElementById("cadastro-familia");
 
   if (botaoIniciar && secaoCadastro) {
-    botaoIniciar.addEventListener("click", (evento) => {
-      // Se estiver como href="#" no HTML
-      evento.preventDefault();
-
-      const topo =
-        secaoCadastro.getBoundingClientRect().top + window.scrollY - 80;
-
-      window.scrollTo({ top: topo, behavior: "smooth" });
+    botaoIniciar.addEventListener("click", (e) => {
+      e.preventDefault();
+      rolarAte(secaoCadastro);
     });
   }
-});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
   const botaoMenu = document.querySelector(".botao-menu");
   const menu = document.querySelector(".menu");
 
-  if (!botaoMenu || !menu) return;
-
-  botaoMenu.addEventListener("click", () => {
-    const ativo = menu.classList.toggle("ativo");
-    botaoMenu.setAttribute("aria-expanded", ativo ? "true" : "false");
-  });
-
-  // Fecha ao clicar em um item
-  menu.querySelectorAll(".item-menu").forEach((link) => {
-    link.addEventListener("click", () => {
-      menu.classList.remove("ativo");
-      botaoMenu.setAttribute("aria-expanded", "false");
+  if (botaoMenu && menu) {
+    botaoMenu.addEventListener("click", () => {
+      const ativo = menu.classList.toggle("ativo");
+      botaoMenu.setAttribute("aria-expanded", ativo ? "true" : "false");
     });
-  });
+
+    menu.querySelectorAll(".item-menu").forEach((item) => {
+      item.addEventListener("click", () => {
+        menu.classList.remove("ativo");
+        botaoMenu.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
 });
