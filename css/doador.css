@@ -525,3 +525,178 @@ body {
   width: fit-content;
   margin: 14px auto 0
 }
+
+@media (max-width: 1024px) {
+  .conteiner-hero-doador {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .titulo-hero {
+    font-size: 32px;
+  }
+
+  .moldura-hero {
+    min-height: 300px;
+  }
+
+  .chip-beneficio {
+    min-width: 160px;
+  }
+
+  .grade-caminhos,
+  .grade-tipos-doacao,
+  .grade-planos-doacao,
+  .grade-transparencia,
+  .grade-duvidas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .painel-perfil {
+    max-width: 100%;
+  }
+
+  .bloco-painel {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .secao-hero-doador {
+    padding: 32px 0 22px;
+  }
+
+  .conteiner-hero-doador {
+    padding: 0 18px;
+  }
+
+  .titulo-hero {
+    font-size: 26px;
+    line-height: 1.2;
+  }
+
+  .subtitulo-hero {
+    font-size: 14px;
+  }
+
+  .linha-beneficios {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .chip-beneficio {
+    min-width: 0;
+  }
+
+  .linha-botoes-hero {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .linha-botoes-hero .botao-primario,
+  .linha-botoes-hero .botao-secundario {
+    width: 100%;
+  }
+
+  .faixa-hero {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .secao-caminhos-doador,
+  .secao-o-que-doar,
+  .secao-planos-doacao,
+  .secao-transparencia-doacao,
+  .secao-duvidas-doadores,
+  .secao-passo-perfil {
+    padding: 40px 0 46px;
+  }
+
+  .conteiner-caminhos,
+  .conteiner-passo-perfil,
+  .conteiner-o-que-doar,
+  .conteiner-planos-doacao,
+  .conteiner-transparencia-doacao,
+  .conteiner-duvidas-doadores {
+    padding: 0 18px;
+  }
+
+  .cabecalho-secao {
+    margin-bottom: 22px;
+  }
+
+  .titulo-secao {
+    font-size: 24px;
+  }
+
+  .subtitulo-secao {
+    font-size: 14px;
+  }
+
+  .grade-caminhos,
+  .grade-tipos-doacao,
+  .grade-planos-doacao,
+  .grade-transparencia,
+  .grade-duvidas {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .bloco-painel {
+    width: 100%;
+    padding: 18px 18px 16px;
+  }
+
+  .titulo-painel {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 420px) {
+  .conteiner-hero-doador {
+    padding: 0 14px;
+  }
+
+  .etiqueta-hero {
+    font-size: 10px;
+  }
+
+  .titulo-hero {
+    font-size: 22px;
+  }
+
+  .subtitulo-hero {
+    font-size: 13.5px;
+  }
+
+  .linha-beneficios {
+    grid-template-columns: 1fr;
+  }
+
+  .moldura-hero {
+    border-radius: 18px;
+    min-height: 240px;
+  }
+
+  .faixa-hero {
+    border-radius: 14px;
+    padding: 10px 10px 8px;
+  }
+
+  .secao-cta-final {
+    padding: 44px 0 52px;
+  }
+
+  .titulo-cta {
+    font-size: 22px;
+  }
+
+  .subtitulo-cta {
+    font-size: 13.5px;
+  }
+
+  .conteiner-cta-final {
+    padding: 0 14px;
+  }
+}

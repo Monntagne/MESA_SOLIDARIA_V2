@@ -451,3 +451,141 @@
   width: 14%;
   margin: 0 auto
 }
+
+@media (max-width: 1024px) {
+  .conteiner-faq-hero {
+    gap: 24px;
+  }
+
+  .cartao-ilustracao-faq {
+    min-width: 240px;
+    max-width: 300px;
+  }
+
+  .conteiner-lista-faq {
+    grid-template-columns: minmax(0, 1.6fr) minmax(240px, 1fr);
+    gap: 20px;
+  }
+
+  .linha-metricas-faq {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 820px) {
+  .secao-faq-hero {
+    padding: 34px 0 26px;
+  }
+
+  .conteiner-faq-hero {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .coluna-faq-hero-ilustracao {
+    justify-content: flex-start;
+  }
+
+  .cartao-ilustracao-faq {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .titulo-faq-hero {
+    font-size: 24px;
+  }
+
+  .chip-faq {
+    width: 100%;
+    border-radius: 16px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .chip-faq span {
+    text-align: right;
+  }
+
+  .secao-filtros-faq {
+    padding: 18px 0 16px;
+  }
+
+  .conteiner-lista-faq {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .coluna-ajuda-faq {
+    order: 2;
+  }
+
+  .coluna-perguntas-faq {
+    order: 1;
+  }
+}
+
+@media (max-width: 520px) {
+  .conteiner-faq-hero,
+  .conteiner-filtros-faq,
+  .conteiner-lista-faq,
+  .conteiner-cta-faq-final {
+    padding: 0 16px;
+  }
+
+  .cabecalho-pergunta-faq {
+    padding: 12px 14px 12px 14px;
+    gap: 10px;
+  }
+
+  .texto-pergunta-faq {
+    font-size: 13.5px;
+  }
+
+  .corpo-pergunta-faq {
+    padding: 0 14px;
+  }
+
+  .cartao-ajuda-faq {
+    padding: 16px 16px 14px;
+    border-radius: 18px;
+  }
+
+  .linha-botoes-cta-faq {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .botao-cta-faq {
+    width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .titulo-faq-hero {
+    font-size: 22px;
+  }
+
+  .texto-faq-hero {
+    font-size: 13.5px;
+  }
+
+  .titulo-filtros-faq {
+    font-size: 18px;
+  }
+
+  .botao-filtro-faq {
+    width: 100%;
+    text-align: center;
+  }
+
+  .linha-botoes-filtro-faq {
+    gap: 8px;
+  }
+
+  .titulo-cta-faq-final {
+    font-size: 21px;
+  }
+}

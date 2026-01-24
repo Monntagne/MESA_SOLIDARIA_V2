@@ -270,3 +270,147 @@ body {
   transform: translateY(-4px);
   box-shadow: 0 10px 20px var(--sombra-08)
 }
+
+@media (max-width: 1024px) {
+  .fundo-banner-empresas {
+    padding: 44px 0 36px;
+  }
+
+  .conteiner-banner-empresas {
+    gap: 28px;
+  }
+
+  .titulo-banner-empresas {
+    font-size: 28px;
+  }
+
+  .imagem-banner-empresas {
+    max-width: 360px;
+  }
+
+  .grade-motivos-empresas,
+  .grade-passos-empresas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grade-beneficios-empresas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .conteiner-banner-empresas {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .bloco-imagem-banner-empresas {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .imagem-banner-empresas {
+    max-width: 100%;
+  }
+
+  .titulo-banner-empresas {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .subtitulo-banner-empresas {
+    font-size: 13.5px;
+    margin-bottom: 18px;
+  }
+
+  .grupo-botoes-banner-empresas {
+    width: 100%;
+  }
+
+  .botao-banner-empresas {
+    width: 100%;
+    text-align: center;
+  }
+
+  .secao-motivos-empresas,
+  .secao-como-funciona-empresas,
+  .secao-beneficios-empresas,
+  .secao-contato-empresas {
+    padding: 40px 0;
+  }
+
+  .secao-contato-empresas {
+    padding: 40px 0 54px;
+  }
+
+  .titulo-secao-empresas {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .grade-motivos-empresas,
+  .grade-passos-empresas,
+  .grade-beneficios-empresas {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 18px;
+  }
+
+  .cartao-motivo-empresa,
+  .cartao-passo-empresa,
+  .cartao-beneficio-empresa {
+    border-radius: 18px;
+    padding: 18px 18px 16px;
+  }
+
+  .titulo-cartao-empresa,
+  .titulo-passo-empresa,
+  .titulo-beneficio-empresa {
+    font-size: 14.5px;
+  }
+
+  .texto-cartao-empresa,
+  .texto-passo-empresa,
+  .texto-beneficio-empresa {
+    font-size: 13px;
+  }
+
+  .area-botoes-contato-empresas {
+    width: 100%;
+  }
+
+  .botao-contato-empresas {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .conteiner-banner-empresas,
+  .conteiner-motivos-empresas,
+  .conteiner-como-funciona-empresas,
+  .conteiner-beneficios-empresas,
+  .conteiner-contato-empresas {
+    padding: 0 16px;
+  }
+
+  .fundo-banner-empresas {
+    padding: 38px 0 30px;
+  }
+
+  .titulo-banner-empresas {
+    font-size: 22px;
+  }
+
+  .subtitulo-banner-empresas,
+  .texto-contato-empresas {
+    font-size: 13.2px;
+  }
+
+  .etapa-passo-empresa {
+    width: 26px;
+    height: 26px;
+    font-size: 13px;
+  }
+}

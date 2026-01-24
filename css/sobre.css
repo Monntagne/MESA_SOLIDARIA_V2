@@ -332,3 +332,179 @@ body {
         transform: translateY(0)
     }
 }
+
+@media (max-width: 1024px) {
+  .secao-banner-sobre,
+  .secao-como-nascemos,
+  .secao-time-sobre,
+  .secao-missao-visao-valores,
+  .secao-pilares-sobre,
+  .secao-ods-sobre {
+    padding: 32px 0 40px;
+  }
+
+  .conteiner-banner-sobre {
+    padding: 32px;
+    gap: 28px;
+  }
+
+  .conteiner-como-nascemos {
+    padding: 28px 28px;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .conteiner-missao-visao-valores,
+  .conteiner-pilares-sobre,
+  .conteiner-time-sobre,
+  .conteiner-ods-sobre {
+    padding: 0 16px;
+  }
+
+  .titulo-banner-sobre {
+    font-size: 28px;
+  }
+
+  .imagem-banner-sobre {
+    max-width: 420px;
+  }
+
+  .grade-missao-visao-valores,
+  .grade-pilares-sobre {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grade-time-sobre {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .card-membro-sobre {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .secao-banner-sobre,
+  .secao-como-nascemos,
+  .secao-time-sobre,
+  .secao-missao-visao-valores,
+  .secao-pilares-sobre,
+  .secao-ods-sobre {
+    padding: 24px 0 32px;
+  }
+
+  .conteiner-banner-sobre,
+  .conteiner-como-nascemos {
+    border-radius: 14px;
+  }
+
+  .conteiner-banner-sobre {
+    padding: 20px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .bloco-texto-banner-sobre {
+    max-width: 100%;
+  }
+
+  .titulo-banner-sobre {
+    font-size: 22px;
+    line-height: 1.25;
+  }
+
+  .texto-banner-sobre {
+    font-size: 14px;
+  }
+
+  .bloco-imagem-banner-sobre {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .imagem-banner-sobre {
+    max-width: 100%;
+  }
+
+  .conteiner-como-nascemos {
+    padding: 18px 16px;
+    gap: 18px;
+  }
+
+  .titulo-secao-sobre {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .grade-missao-visao-valores,
+  .grade-pilares-sobre {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .cartao-mvv,
+  .cartao-pilar-sobre {
+    padding: 18px 16px;
+    border-radius: 14px;
+  }
+
+  .titulo-cartao-mvv,
+  .titulo-pilar-sobre {
+    font-size: 16px;
+  }
+
+  .texto-cartao-mvv,
+  .texto-pilar-sobre,
+  .texto-etapa-linha-tempo {
+    font-size: 13px;
+  }
+
+  .linha-tempo-sobre {
+    padding-left: 18px;
+  }
+
+  .conteudo-linha-tempo {
+    padding-left: 12px;
+  }
+
+  .bola-linha-tempo {
+    width: 12px;
+    height: 12px;
+    left: -3px;
+  }
+
+  .grade-time-sobre {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .card-membro-sobre {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .foto-membro-sobre {
+    width: 84px;
+    height: 84px;
+  }
+
+  .linha-ods-sobre {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .imagem-ods-sobre {
+    width: 110px;
+  }
+
+  html {
+    scroll-padding-top: 64px;
+  }
+}

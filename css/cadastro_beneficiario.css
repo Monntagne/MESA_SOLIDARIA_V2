@@ -231,3 +231,155 @@
   border-radius: 10px;
   cursor: pointer
 }
+
+@media (max-width: 1024px) {
+  .pagina-cadastro-beneficiario {
+    padding: 36px 16px 56px;
+  }
+
+  .secao-cadastro-beneficiario {
+    max-width: 820px;
+    padding: 28px 22px 22px;
+  }
+
+  .formulario-cadastro-beneficiario {
+    gap: 20px;
+  }
+
+  .bloco-formulario {
+    padding: 16px 14px;
+  }
+}
+
+@media (max-width: 820px) {
+  .pagina-cadastro-beneficiario {
+    padding: 28px 14px 48px;
+  }
+
+  .secao-cadastro-beneficiario {
+    padding: 24px 18px 18px;
+    border-radius: 16px;
+  }
+
+  .titulo-cadastro {
+    font-size: 24px;
+  }
+
+  .texto-cadastro {
+    font-size: 13.5px;
+  }
+
+  .linha-campos {
+    gap: 12px;
+  }
+
+  .campo-formulario {
+    min-width: 220px;
+  }
+
+  .campo-maior,
+  .campo-menor {
+    flex: 1;
+  }
+
+  .rodape-formulario {
+    justify-content: stretch;
+  }
+
+  .botao-principal-cadastro,
+  .botao-secundario-cadastro {
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .pagina-cadastro-beneficiario {
+    padding: 22px 12px 40px;
+    min-height: auto;
+  }
+
+  .secao-cadastro-beneficiario {
+    padding: 20px 14px 14px;
+    border-radius: 14px;
+  }
+
+  .cabecalho-cadastro {
+    margin-bottom: 18px;
+  }
+
+  .titulo-cadastro {
+    font-size: 22px;
+  }
+
+  .texto-cadastro {
+    font-size: 13px;
+  }
+
+  .formulario-cadastro-beneficiario {
+    gap: 16px;
+  }
+
+  .bloco-formulario {
+    padding: 14px 12px;
+    border-radius: 12px;
+  }
+
+  .subtitulo-bloco {
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+
+  .linha-campos {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .campo-formulario {
+    min-width: 0;
+  }
+
+  .entrada-campo {
+    padding: 10px 10px;
+    font-size: 14px;
+  }
+
+  .rodape-formulario {
+    gap: 10px;
+    margin-top: 6px;
+  }
+
+  .botao-principal-cadastro {
+    padding: 11px 18px;
+  }
+
+  .botao-secundario-cadastro {
+    padding: 10px 18px;
+  }
+
+  .popup-confirmacao {
+    padding: 22px 18px;
+    border-radius: 16px;
+  }
+
+  .titulo-confirmacao {
+    font-size: 20px;
+  }
+
+  .texto-confirmacao {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 380px) {
+  .secao-cadastro-beneficiario {
+    padding: 18px 12px 12px;
+  }
+
+  .titulo-cadastro {
+    font-size: 20px;
+  }
+
+  .subtitulo-bloco {
+    font-size: 14px;
+  }
+}

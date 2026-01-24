@@ -126,3 +126,92 @@ body {
     font-weight: 500;
     white-space: nowrap
 }
+
+@media (max-width: 1024px) {
+  .conteiner-rodape {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 16px;
+  }
+
+  .linha-vertical {
+    display: none;
+  }
+
+  .bloco-links {
+    width: 100%;
+    justify-content: center;
+    gap: 28px;
+    text-align: left;
+  }
+
+  .bloco-sociais,
+  .bloco-apps,
+  .bloco-logo-rodape {
+    justify-content: center;
+  }
+
+  .botao-app {
+    padding: 8px 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .rodape {
+    padding: 24px 0;
+  }
+
+  .conteiner-rodape {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .bloco-links {
+    width: 100%;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .coluna-links {
+    gap: 8px;
+  }
+
+  .bloco-sociais {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .icone-social {
+    width: 28px;
+    height: 28px;
+  }
+
+  .bloco-apps {
+    width: 100%;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .botao-app {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 16px;
+  }
+
+  .texto-botao-app {
+    white-space: normal;
+  }
+
+  .bloco-logo-rodape {
+    justify-content: center;
+  }
+
+  .texto-logo-rodape {
+    white-space: normal;
+    text-align: center;
+  }
+}

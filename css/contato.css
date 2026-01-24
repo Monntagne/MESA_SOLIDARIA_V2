@@ -313,3 +313,121 @@ body.pagina-contato {
   content: "↗";
   font-size: .85rem
 }
+
+@media (max-width: 1024px) {
+  .conteudo-contato {
+    padding: 100px 18px 52px;
+  }
+
+  .secao-layout-contato {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .formulario-contato {
+    padding: 20px 18px 22px;
+  }
+}
+
+@media (max-width: 820px) {
+  .conteudo-contato {
+    padding: 96px 16px 48px;
+  }
+
+  .secao-layout-contato {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .coluna-esquerda-contato {
+    order: 1;
+  }
+
+  .coluna-direita-contato {
+    order: 2;
+  }
+
+  .campos-lado-a-lado {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .titulo-contato {
+    font-size: 1.9rem;
+  }
+
+  .descricao-contato {
+    font-size: .95rem;
+  }
+
+  .cartao-contato {
+    padding: 14px 14px 16px;
+  }
+}
+
+@media (max-width: 520px) {
+  .conteudo-contato {
+    padding: 92px 14px 44px;
+  }
+
+  .etiqueta-pagina {
+    font-size: .76rem;
+    padding: 4px 12px;
+  }
+
+  .titulo-contato {
+    font-size: 1.7rem;
+  }
+
+  .descricao-contato {
+    font-size: .92rem;
+  }
+
+  .lista-perfis-contato {
+    gap: 8px;
+  }
+
+  .botao-perfil {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 16px;
+    font-size: .9rem;
+  }
+
+  .texto-perfil-selecionado {
+    font-size: .88rem;
+  }
+
+  .formulario-contato {
+    border-radius: 20px;
+    padding: 18px 14px 20px;
+  }
+
+  .campo-contato {
+    padding: 10px 11px;
+  }
+
+  .botao-enviar-contato {
+    padding: 12px 16px;
+    font-size: .95rem;
+  }
+
+  .rotulo-checkbox {
+    gap: 10px;
+    font-size: .8rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .titulo-contato {
+    font-size: 1.55rem;
+  }
+
+  .botao-perfil {
+    padding: 10px 14px;
+  }
+
+  .cartao-contato {
+    border-radius: 16px;
+  }
+}

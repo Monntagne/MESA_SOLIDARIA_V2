@@ -530,3 +530,201 @@ body {
   color: #fff;
   border-color: transparent
 }
+
+@media (max-width: 1024px) {
+  .conteiner-hero-voluntario {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .titulo-hero {
+    font-size: 32px;
+  }
+
+  .moldura-hero {
+    min-height: 300px;
+  }
+
+  .cartao-destaque-hero {
+    min-width: 170px;
+  }
+
+  .card-definicao {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 28px 28px 24px;
+  }
+
+  .imagem-definicao {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .grade-motivos,
+  .grade-beneficios {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .linha-passos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .carrossel-item {
+    flex: 0 0 calc(50% - 10px);
+  }
+}
+
+@media (max-width: 720px) {
+  .secao-hero-voluntario {
+    padding: 34px 0 28px;
+  }
+
+  .conteiner-hero-voluntario,
+  .conteiner-definicao-novo,
+  .conteiner-motivos,
+  .conteiner-cadastro,
+  .conteiner-beneficios,
+  .conteiner-cta {
+    padding: 0 18px;
+  }
+
+  .titulo-hero {
+    font-size: 26px;
+    line-height: 1.2;
+  }
+
+  .subtitulo-hero {
+    font-size: 14px;
+  }
+
+  .linha-destaques-hero {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cartao-destaque-hero {
+    min-width: 0;
+  }
+
+  .linha-botoes-hero {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .linha-botoes-hero .botao-primario,
+  .linha-botoes-hero .botao-secundario {
+    width: 100%;
+  }
+
+  .etiqueta-flutuante {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .secao-definicao-voluntario-nova,
+  .secao-motivos-voluntario-nova,
+  .secao-beneficios-voluntariado-nova {
+    padding: 40px 0 46px;
+  }
+
+  .secao-cadastro-voluntario-nova {
+    padding: 44px 0 50px;
+  }
+
+  .cabecalho-secao {
+    margin-bottom: 22px;
+  }
+
+  .titulo-secao {
+    font-size: 24px;
+  }
+
+  .subtitulo-secao,
+  .texto-secao {
+    font-size: 14px;
+  }
+
+  .grade-motivos,
+  .grade-beneficios {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .linha-passos {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .cartao-passo {
+    padding: 18px 16px 16px;
+  }
+
+  .carrossel-trilha {
+    gap: 14px;
+  }
+
+  .carrossel-item {
+    flex: 0 0 100%;
+  }
+
+  .secao-cta-voluntario-nova {
+    padding: 50px 0 56px;
+  }
+
+  .titulo-cta {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 420px) {
+  .conteiner-hero-voluntario,
+  .conteiner-definicao-novo,
+  .conteiner-motivos,
+  .conteiner-cadastro,
+  .conteiner-beneficios,
+  .conteiner-cta {
+    padding: 0 14px;
+  }
+
+  .titulo-hero {
+    font-size: 22px;
+  }
+
+  .subtitulo-hero {
+    font-size: 13.5px;
+  }
+
+  .linha-destaques-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .moldura-hero {
+    border-radius: 18px;
+    min-height: 240px;
+  }
+
+  .etiqueta-flutuante {
+    border-radius: 14px;
+    padding: 10px 10px 8px;
+  }
+
+  .card-definicao {
+    padding: 22px 18px 18px;
+  }
+
+  .chip-definicao {
+    font-size: 10px;
+  }
+
+  .icone-beneficio {
+    width: 76px;
+    height: 46px;
+  }
+
+  .botao-carrossel {
+    padding: 10px 12px;
+    font-size: 11.5px;
+  }
+}

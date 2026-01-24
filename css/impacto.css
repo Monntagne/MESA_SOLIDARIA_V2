@@ -536,3 +536,215 @@
     width: 15%;
     margin: 0 auto
 }
+
+@media (max-width: 1024px) {
+  .conteiner-impacto-hero {
+    gap: 24px;
+  }
+
+  .titulo-impacto-hero {
+    font-size: 28px;
+  }
+
+  .cartao-kpi-hero {
+    min-width: 240px;
+    max-width: 280px;
+    padding: 20px 20px 18px;
+  }
+
+  .numero-kpi-hero {
+    font-size: 34px;
+  }
+
+  .grade-indicadores-impacto,
+  .grade-impacto-perfis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .conteiner-graficos-impacto {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .area-grafico-pizza {
+    justify-content: space-between;
+  }
+
+  .pizza-impacto {
+    width: 180px;
+    height: 180px;
+  }
+
+  .miolo-pizza {
+    width: 100px;
+    height: 100px;
+  }
+
+  .coluna-barra {
+    max-width: 64px;
+  }
+}
+
+@media (max-width: 720px) {
+  .secao-impacto-hero {
+    padding: 36px 0 30px;
+  }
+
+  .conteiner-impacto-hero {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .coluna-hero-impacto-kpi {
+    justify-content: flex-start;
+  }
+
+  .cartao-kpi-hero {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .titulo-impacto-hero {
+    font-size: 24px;
+  }
+
+  .linha-resumo-impacto {
+    gap: 10px;
+  }
+
+  .chip-impacto {
+    width: 100%;
+    border-radius: 16px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .chip-impacto .chip-texto {
+    text-align: right;
+  }
+
+  .secao-indicadores-impacto {
+    padding: 26px 0 34px;
+  }
+
+  .grade-indicadores-impacto,
+  .grade-impacto-perfis {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .bloco-grafico-barras,
+  .bloco-grafico-pizza {
+    padding: 18px 18px 16px;
+    border-radius: 20px;
+  }
+
+  .area-grafico-barras {
+    grid-template-columns: 34px minmax(0, 1fr);
+    height: 200px;
+  }
+
+  .grade-barras {
+    gap: 10px;
+  }
+
+  .coluna-barra {
+    max-width: none;
+  }
+
+  .area-grafico-pizza {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .pizza-impacto {
+    width: 170px;
+    height: 170px;
+  }
+
+  .miolo-pizza {
+    width: 96px;
+    height: 96px;
+  }
+
+  .legenda-pizza {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+  }
+
+  .secao-impacto-perfis,
+  .secao-linha-tempo-impacto {
+    padding: 34px 0 38px;
+  }
+
+  .titulo-impacto-perfis,
+  .titulo-linha-tempo-impacto {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .linha-botoes-cta-impacto {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .botao-cta-impacto-principal,
+  .botao-cta-impacto-secundario {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .conteiner-impacto-hero,
+  .conteiner-indicadores-impacto,
+  .conteiner-impacto-perfis,
+  .conteiner-linha-tempo-impacto,
+  .conteiner-graficos-impacto,
+  .conteiner-cta-impacto-final {
+    padding: 0 16px;
+  }
+
+  .titulo-impacto-hero {
+    font-size: 22px;
+  }
+
+  .texto-impacto-hero {
+    font-size: 13.5px;
+  }
+
+  .titulo-grafico {
+    font-size: 20px;
+  }
+
+  .subtitulo-grafico {
+    font-size: 12.5px;
+  }
+
+  .rotulo-mes {
+    font-size: 10px;
+  }
+
+  .pizza-impacto {
+    width: 160px;
+    height: 160px;
+  }
+
+  .miolo-pizza {
+    width: 92px;
+    height: 92px;
+  }
+
+  .porcentagem-central {
+    font-size: 20px;
+  }
+
+  .titulo-cta-impacto-final {
+    font-size: 22px;
+  }
+}
