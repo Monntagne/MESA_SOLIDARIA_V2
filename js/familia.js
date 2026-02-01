@@ -52,16 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const botaoIniciar = document.querySelector(".botao-iniciar-cadastro-familia");
-  const secaoCadastro = document.getElementById("cadastro-familia");
-
-  if (botaoIniciar && secaoCadastro) {
-    botaoIniciar.addEventListener("click", (e) => {
-      e.preventDefault();
-      rolarAte(secaoCadastro);
-    });
-  }
-
   const botaoMenu = document.querySelector(".botao-menu");
   const menu = document.querySelector(".menu");
 

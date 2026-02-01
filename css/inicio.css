@@ -248,9 +248,19 @@ body {
   box-shadow: 0 18px 40px rgba(0, 0, 0, .10)
 }
 
-.cartao-publico {
+.publico-voluntario {
+  border-top: 4px solid var(--azul)
+}
+.publico-familia {
   border-top: 4px solid var(--verde)
 }
+.publico-doador {
+  border-top: 4px solid var(--laranja)
+}
+.publico-pontodecoleta {
+  border-top: 4px solid var(--amarelo)
+}
+
 
 .cartao-passo-funcionamento {
   border-top: 4px solid var(--laranja)

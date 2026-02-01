@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mesa Solidária - Perfil do Beneficiário</title>
+    <link rel="stylesheet" href="css/perfil_beneficiario.css" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/navbar.css">
+  </head>
+
+  <body>
+     <header class="cabecalho">
+      <div class="conteiner-navbar">
+        <div class="area-logo">
+          <a href="index.html">
+            <img
+              src="img/MESA SOLIDARIA - LOGO PRINCIPAL.svg"
+              alt="Logo Mesa Solidária"
+              class="imagem-logo"
+            />
+          </a>
+        </div>
+
+        <nav class="menu">
+          <a href="index.html" class="item-menu">Início</a>
+          <a href="sobre.html" class="item-menu">Sobre</a>
+          <a href="comoFunciona.html" class="item-menu">Como funciona</a>
+
+          <a href="familia.html" class="item-menu">Famílias</a>
+          <a href="doador.html" class="item-menu">Doador</a>
+          <a href="voluntario.html" class="item-menu">Voluntário</a>
+          <a href="empresaParceira.html" class="item-menu">Empresas parceiras</a>
+
+          <a href="impacto.html" class="item-menu">Impacto</a>
+          <a href="faq.html" class="item-menu">FAQ</a>
+          <a href="contato.html" class="item-menu">Contato</a>
+        </nav>
+
+        <!-- <div class="area-botao">
+          <a class="botao-entrar" href="login.html">Entrar</a>
+
+          <button
+            class="botao-menu"
+            type="button"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+          >
+            <span></span>
+          </button>
+        </div> -->
+      </div>
+    </header>
+    <main class="pagina">
+      <section class="grade" aria-label="Painel do beneficiário">
+        <article class="cartao cartao-perfil">
+          <div class="perfil-foto">
+            <img
+              src="imagens/Gemini_Generated_Image_wfstqwwfstqwwfst.png"
+              alt="Foto do beneficiário"
+            />
+          </div>
+
+          <h2 class="perfil-nome">Elisangela Pereira</h2>
+          <span class="selo-verificado">✔ Beneficiário Verificado</span>
+
+          <dl class="perfil-info">
+            <div class="perfil-item">
+              <dt>Cadastrada a</dt>
+              <dd>9 meses</dd>
+            </div>
+            <div class="perfil-item">
+              <dt>Retiradas</dt>
+              <dd>45</dd>
+            </div>
+            <div class="perfil-item">
+              <dt>Último acesso</dt>
+              <dd>2 dias atrás</dd>
+            </div>
+            <div class="perfil-item">
+              <dt>Status</dt>
+              <dd>Ativo</dd>
+            </div>
+          </dl>
+        </article>
+
+        <article class="cartao cartao-info" aria-label="Informações pessoais">
+          <header class="cabecalho-cartao">
+            <h3>Informações Pessoais</h3>
+            <button
+              class="icone-botao"
+              id="botaoEditarInfo"
+              type="button"
+              aria-label="Editar informações"
+            >
+              ✎
+            </button>
+          </header>
+
+          <div class="lista-info" id="listaInfo">
+            <div class="linha-info" data-campo="nome">
+              <span class="rotulo">Nome</span>
+              <span class="valor" data-valor>Elisangela Pereira</span>
+              <input class="entrada" type="text" value="Elisangela Pereira" aria-label="Nome" />
+            </div>
+
+            <div class="linha-info" data-campo="cpf">
+              <span class="rotulo">CPF</span>
+              <span class="valor" data-valor>123.456.789-00</span>
+              <input class="entrada" type="text" value="123.456.789-00" aria-label="CPF" />
+            </div>
+
+            <div class="linha-info" data-campo="celular">
+              <span class="rotulo">Celular</span>
+              <span class="valor" data-valor>(11) 99999-7777</span>
+              <input class="entrada" type="text" value="(11) 99999-7777" aria-label="Celular" />
+            </div>
+
+            <div class="linha-info" data-campo="email">
+              <span class="rotulo">Email</span>
+              <span class="valor" data-valor>elisangela@email.com</span>
+              <input
+                class="entrada"
+                type="email"
+                value="elisangela@email.com"
+                aria-label="Email"
+              />
+            </div>
+          </div>
+
+          <div class="acoes-info">
+            <button class="botao botao-primario" id="botaoSalvarInfo" type="button">
+              Salvar
+            </button>
+          </div>
+        </article>
+
+        <article class="cartao cartao-resumo" aria-label="Resumo e status de necessidade">
+          <div class="linha-toggle" aria-label="Estou precisando de alimentos">
+            <p>Estou precisando de alimentos:</p>
+            <label class="chave">
+              <input type="checkbox" id="togglePrecisoAlimentos" checked />
+              <span class="trilho" aria-hidden="true"></span>
+            </label>
+          </div>
+
+          <h3 class="titulo-resumo">Resumo</h3>
+
+          <div class="lista-resumo">
+            <div class="item-resumo"><span>Mercadinho do Zé</span><strong>5</strong></div>
+            <div class="item-resumo"><span>Mercearia do Jão</span><strong>4</strong></div>
+            <div class="item-resumo"><span>Total de itens retirados</span><strong>45</strong></div>
+            <div class="item-resumo"><span>Solicitação pendente</span><strong>5</strong></div>
+          </div>
+        </article>
+
+        <article class="cartao cartao-grafico cartao-linha" aria-label="Minhas retiradas por mês">
+          <h3>Minhas Retiradas por Mês</h3>
+          <div class="area-grafico">
+            <canvas id="graficoLinha"></canvas>
+          </div>
+        </article>
+
+        <article class="cartao cartao-grafico cartao-pizza" aria-label="Análise dos alimentos">
+          <h3>Análise dos Alimentos</h3>
+          <div class="area-grafico">
+            <canvas id="graficoPizza"></canvas>
+          </div>
+        </article>
+      </section>
+
+      <section class="cartao cartao-dependentes" aria-label="Dependentes">
+        <header class="cabecalho-cartao">
+          <h3>Dependentes</h3>
+          <button class="botao botao-secundario" id="botaoAdicionarDependente" type="button">
+            + Adicionar
+          </button>
+        </header>
+
+        <div class="lista-dependentes" id="listaDependentes">
+          <div class="dependente">
+            <img src="imagens/image.png" alt="Dependente" />
+
+            <div class="dependente-campos">
+              <input type="text" value="José Antônio" disabled />
+              <input type="text" value="12.345.678-9" disabled />
+              <input type="text" value="7 anos" disabled />
+            </div>
+
+            <div class="dependente-acoes">
+              <button
+                class="icone-botao"
+                type="button"
+                data-acao="editar"
+                aria-label="Editar dependente"
+              >
+                ✎
+              </button>
+              <button
+                class="icone-botao perigo"
+                type="button"
+                data-acao="excluir"
+                aria-label="Excluir dependente"
+              >
+                🗑️
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      </main>
+
+          <footer class="rodape">
+      <div class="conteiner-rodape">
+        <div class="bloco-links">
+          <div class="coluna-links">
+            <a href="index.html" class="item-menu">Início</a>
+            <a href="sobre.html" class="item-menu">Sobre</a>
+            <a href="comoFunciona.html" class="item-menu">Como funciona</a>
+            <a href="familia.html" class="item-menu">Famílias</a>
+            <a href="doador.html" class="item-menu">Doador</a>
+          </div>
+
+          <div class="coluna-links">
+            <a href="voluntario.html" class="item-menu">Voluntário</a>
+            <a href="empresaParceira.html" class="item-menu">Empresas parceiras</a>
+            <a href="impacto.html" class="item-menu">Impacto</a>
+            <a href="faq.html" class="item-menu">FAQ</a>
+            <a href="contato.html" class="item-menu">Contato</a>
+          </div>
+        </div>
+
+        <div class="linha-vertical"></div>
+
+        <div class="bloco-sociais">
+          <a href="#" class="link-social">
+            <img src="img/FACEBOOK.png" alt="Facebook" class="icone-social" />
+          </a>
+          <a href="#" class="link-social">
+            <img src="img/GOOGLE.png" alt="Google" class="icone-social" />
+          </a>
+          <a href="#" class="link-social">
+            <img src="img/LINKEDIN.png" alt="LinkedIn" class="icone-social" />
+          </a>
+          <a href="#" class="link-social">
+            <img src="img/X.png" alt="X" class="icone-social" />
+          </a>
+        </div>
+
+        <div class="linha-vertical"></div>
+
+        <div class="bloco-apps">
+          <button class="botao-app" type="button">
+            <img src="img/apple.png" alt="Apple" class="icone-app" />
+            <span class="texto-botao-app">Baixe nosso App!</span>
+          </button>
+
+          <button class="botao-app" type="button">
+            <img src="img/android.png" alt="Android" class="icone-app" />
+            <span class="texto-botao-app">Baixe nosso App!</span>
+          </button>
+        </div>
+
+        <div class="linha-vertical"></div>
+
+        <div class="bloco-logo-rodape">
+          <img src="img/logo.png" alt="Mesa Solidária" class="logo-rodape" />
+          <span class="texto-logo-rodape">Mesa Solidária</span>
+        </div>
+    </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="js/perfil_beneficiario.js"></script>
+  </body>
+</html>
