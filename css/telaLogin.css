@@ -41,6 +41,10 @@ body {
   max-width: 420px
 }
 
+.coluna-formulario.oculto {
+  display: none;
+}
+
 .titulo-principal {
   font-size: 28px;
   font-weight: 700;
@@ -81,7 +85,7 @@ body {
 
 .cartao-perfil.selecionado {
   border-color: var(--azul-escuro);
-  box-shadow: 0 8px 22px var(--s08)
+  box-shadow: 0 8px 22px var(--s08);
 }
 
 .avatar-perfil {
