@@ -32,12 +32,10 @@
           <a href="index.html" class="item-menu">Início</a>
           <a href="sobre.html" class="item-menu">Sobre</a>
           <a href="comoFunciona.html" class="item-menu">Como funciona</a>
-
           <a href="familia.html" class="item-menu">Famílias</a>
           <a href="doador.html" class="item-menu">Doador</a>
           <a href="voluntario.html" class="item-menu">Voluntário</a>
           <a href="empresaParceira.html" class="item-menu">Empresas parceiras</a>
-
           <a href="impacto.html" class="item-menu">Impacto</a>
           <a href="faq.html" class="item-menu">FAQ</a>
           <a href="contato.html" class="item-menu">Contato</a>
@@ -58,11 +56,11 @@
       </div>
     </header>
 
-    <div class="pagina-login">
-      <section class="coluna-perfis">
+    <main class="pagina-login">
+      <section class="coluna-perfis" aria-label="Selecione um perfil">
         <h1 class="titulo-principal">Acesse o Mesa Solidária</h1>
         <p class="texto-introducao">
-          Escolha como você quer entrar na plataforma e faça login com seus dados.
+          Escolha um perfil para exibir o login. Clique novamente no mesmo perfil para ocultar.
         </p>
 
         <div class="lista-perfis">
@@ -108,7 +106,7 @@
         </div>
       </section>
 
-      <section class="coluna-formulario">
+      <section class="coluna-formulario" aria-label="Área de login">
         <div class="cartao-login">
           <h2 class="titulo-login">Entre na sua conta</h2>
 
@@ -116,9 +114,7 @@
             <input type="hidden" name="tipo_usuario" id="tipo-usuario" value="" />
 
             <div class="campo-formulario">
-              <label class="rotulo-campo" for="entrada-identificador">
-                Digite seu E-mail ou CPF:
-              </label>
+              <label class="rotulo-campo" for="entrada-identificador">Digite seu E-mail ou CPF:</label>
               <div class="campo-com-icone">
                 <span class="icone-campo">@</span>
                 <input
@@ -134,9 +130,7 @@
             </div>
 
             <div class="campo-formulario">
-              <label class="rotulo-campo" for="entrada-senha">
-                Digite sua senha:
-              </label>
+              <label class="rotulo-campo" for="entrada-senha">Digite sua senha:</label>
               <div class="campo-com-icone">
                 <span class="icone-campo">🔒</span>
                 <input
@@ -151,19 +145,19 @@
               </div>
             </div>
 
-            <a href="perfil_beneficiario.html" class="botao-entrar" id="botao-entrar-login">Entrar</a>
+            <button type="button" class="botao-entrar" id="botao-entrar-login">Entrar</button>
+
+            <p class="mensagem-login" id="mensagem-login" aria-live="polite"></p>
 
             <div class="acoes-login">
               <a href="#" class="link-login">Esqueceu a senha?</a>
               <span class="separador-links">•</span>
-              <a href="cadastro_beneficiario.html" class="link-login" id="link-cadastro">
-                Cadastre-se
-              </a>
+              <a href="cadastro_beneficiario.html" class="link-login" id="link-cadastro">Cadastre-se</a>
             </div>
           </form>
         </div>
       </section>
-    </div>
+    </main>
 
     <footer class="rodape">
       <div class="conteiner-rodape">
